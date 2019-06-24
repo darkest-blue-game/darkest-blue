@@ -7,7 +7,7 @@
 //This will be all global Variables
 var playerName = document.getElementById('PlayerName');
 var PlayerNameH1 = document.getElementById('Display Name');
-
+console.log(playerName);
 //This will be the function the save the players name and start the game.
 function handleSubmit(event) {
   // DONE: Prevent the page from reloading
@@ -17,6 +17,7 @@ function handleSubmit(event) {
   showPlayerName();
 }
 var showPlayerName = function(){
+  console.log('Im here');
   var displayName = JSON.parse(localStorage.getItem('Player Name'));
   PlayerNameH1.textContent = displayName;
 };
@@ -27,8 +28,8 @@ var storePlayerName = function(PlayerName){
 
 playerName.addEventListener('submit',handleSubmit);
 
-Player.prototype.createPlayer = function(playerName){
-  var newPlayer = new Player(playerName);
-  var bossPlayer = new Player('boss');
+// Player.prototype.createPlayer = function(playerName){
+//   var newPlayer = new Player(playerName);
+//   var bossPlayer = new Player('boss');
 
-};
+// };
