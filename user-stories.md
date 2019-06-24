@@ -1,3 +1,5 @@
+MVP
+
 1. As a developer, I want a player and the entity he will play against displayed when the game starts.
 2. As a developer I want to come up with a good name for the game
 3. As a developer, I would like to have a stack of 50 cards available for players to draw from when the game starts.
@@ -16,6 +18,7 @@
  
 
 Stretch Goals
+
 1. As a developer, I want to handle wild card cards with different mechanics.
 2. As a developer I need to perform surveys and take pictures of the class to use as card imagery and descriptions. 
 3. As a developer I want to program the game AI to have 3 arrays of cards for the boss to use as decks of cards.
