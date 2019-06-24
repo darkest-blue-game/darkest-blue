@@ -26,3 +26,9 @@ var storePlayerName = function(PlayerName){
 };
 
 playerName.addEventListener('submit',handleSubmit);
+
+Player.prototype.createPlayer = function(playerName){
+  var newPlayer = new Player(playerName);
+  var bossPlayer = new Player('boss');
+
+};
