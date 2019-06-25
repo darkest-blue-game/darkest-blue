@@ -52,7 +52,10 @@ var storeObjects = function(){
   localStorage.setItem('Opponent',JSON.stringify(Player.allPlayers[1]));
   localStorage.setItem('Game Board',JSON.stringify(newBoard));
 };
-
+var playersTurn = function(){
+  var index = Math.floor(Math.random());
+  Player.allPlayers[index].nextTurn = true;
+};
 
 //This the eventlistener
 playerName.addEventListener('submit',handleSubmit);

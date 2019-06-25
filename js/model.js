@@ -18,7 +18,6 @@ var Board = function (allPlayers = [], allCards = []) {
   this.allPlayers = allPlayers;
   this.allCards = allCards;
 };
-
 var Card = function (avatar, type, weight, imageSrc, wildCard) {
   this.avatarName = avatar;
   this.cardType = type;
@@ -47,7 +46,6 @@ var createDeck = function () {
   console.log(newDeck);
   return newDeck;
 };
-
 Hand.allCards = [];
 //This is the creation of the game board
 var createBoard = function () {
@@ -59,12 +57,10 @@ var createPlayer = function (playerName) {
   new Player(playerName);
   new Player('boss');
 };
-
 /*function createPlayer(playerName) {
   new Player(playerName);
 }
 */
-
 function shuffleDeck(deck) {
   //console.log('deck length: ' + deck.cards.length + deck.cards[0].avatarName);
   var i = 0;
@@ -130,6 +126,7 @@ function playCard(currentPlayer, otherPlayer, card) {
   otherPlayer.nextTurn = true;
   currentPlayer.discardPile.cards.push(card);
 }
+
 
 function createCard(avatarName, cardType, cardWeight) {
   new Card(avatarName, cardType, cardWeight);
