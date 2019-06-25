@@ -1,4 +1,5 @@
 'use strict';
+var opponetDeck = [];
 //Player constructor
 var Player = function (name) {
   this.name = name;
@@ -6,6 +7,8 @@ var Player = function (name) {
   this.numberOfCardsPlayed = 0;
   this.numberOfTurnsPlayed = 0;
   this.nextTurn = false;
+  this.deck = Deck;
+  this.hand = Hand;
   //array of players
   Player.allPlayers.push(this);
 };
@@ -36,13 +39,18 @@ var Hand = function (owner, cards) {
   this.cards = cards;
   Hand.allCards.push(this);
 };
+//This will create deck
+var createDeck = function(){
+  newDeck = new Deck(Card.allCards);
+  console.log(newDeck);
+  return newDeck;
+};
 
 //This is the creation of the game board
 var createBoard = function () {
   newBoard = new Board;
   return newBoard;
 };
-
 //This function creates the players and the opponets
 var createPlayer = function (playerName) {
   new Player(playerName);
@@ -66,8 +74,6 @@ function shuffleDeck(deck) {
   }
   return deck;
 }
-
-
 function shuffleDeck(deck) {
   var i = 0;
   while (i < deck.length) {
