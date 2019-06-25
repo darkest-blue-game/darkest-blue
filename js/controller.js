@@ -21,25 +21,31 @@ function handleSubmit(event) {
   console.log(Player.allPlayers);
   console.log(newBoard);
 }
+
+//This will contain all the game board setup functions
 var boardSetUp = function(newBoard){
   newBoard.allPlayers.push(Player.allPlayers[0]);
   newBoard.allPlayers.push(Player.allPlayers[1]);
 };
+
+//This is to display the players name
 var showPlayerName = function(){
   var displayName = localStorage.getItem('Player Name');
   PlayerNameH1.textContent = displayName;
 };
-
+//This will store the players name
 var storePlayerName = function(PlayerName){
   localStorage.setItem('Player Name',JSON.stringify(PlayerName));
 };
-
+//This the eventlistener
 playerName.addEventListener('submit',handleSubmit);
-
+//This is the creation of the game board
 var createBoard = function(){
   var newBoard = new Board;
   return newBoard;
 };
+
+//This function creates the players and the opponets
 var createPlayer = function(playerName){
   var newPlayer = new Player(playerName);
   var bossPlayer = new Player('boss');
