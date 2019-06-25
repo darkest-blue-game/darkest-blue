@@ -7,6 +7,7 @@
 //This will be all global Variables
 var playerName = document.getElementById('PlayerName');
 var PlayerNameH1 = document.getElementById('Display Name');
+var newBoard;
 //This will be the function the save the players name and start the game.
 function handleSubmit(event) {
   // DONE: Prevent the page from reloading
@@ -18,16 +19,13 @@ function handleSubmit(event) {
   var newBoard = createBoard();
   createPlayer(playerName);
   boardSetUp(newBoard);
-  console.log(Player.allPlayers);
-  console.log(newBoard);
+  storeObjects();
 }
-
 //This will contain all the game board setup functions
 var boardSetUp = function(newBoard){
   newBoard.allPlayers.push(Player.allPlayers[0]);
   newBoard.allPlayers.push(Player.allPlayers[1]);
 };
-
 //This is to display the players name
 var showPlayerName = function(){
   var displayName = localStorage.getItem('Player Name');
@@ -35,18 +33,29 @@ var showPlayerName = function(){
 };
 //This will store the players name
 var storePlayerName = function(PlayerName){
-  localStorage.setItem('Player Name',JSON.stringify(PlayerName));
+  localStorage.setItem('Player',JSON.stringify(PlayerName));
+};
+//This will store the player objects to local storage
+var storeObjects = function(){
+  localStorage.setItem('Player',JSON.stringify(Player.allPlayers[0]));
+  localStorage.setItem('Opponent',JSON.stringify(Player.allPlayers[1]));
+  localStorage.setItem('Game Board',JSON.stringify(newBoard));
 };
 //This the eventlistener
 playerName.addEventListener('submit',handleSubmit);
-//This is the creation of the game board
-var createBoard = function(){
-  var newBoard = new Board;
-  return newBoard;
-};
 
-//This function creates the players and the opponets
-var createPlayer = function(playerName){
-  var newPlayer = new Player(playerName);
-  var bossPlayer = new Player('boss');
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
