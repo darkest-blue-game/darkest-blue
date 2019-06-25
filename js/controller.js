@@ -9,6 +9,7 @@ var playerName = document.getElementById('PlayerName');
 var PlayerNameH1 = document.getElementById('Display Name');
 var newBoard;
 var newDeck;
+var bossDeck = createDeck();
 //This will be the function the save the players name and start the game.
 function handleSubmit(event) {
   // DONE: Prevent the page from reloading
@@ -21,16 +22,19 @@ function handleSubmit(event) {
   createPlayer(playerName);
   boardSetUp(newBoard);
   newDeck = createDeck();
-  assignDeck(newDeck);
+  assignDeck(newDeck,bossDeck);
   newDeck = shuffleDeck(newDeck);
   assignHand();
   storeObjects();
 }
-var assignDeck = function(newDeck){
+var assignDeck = function(newDeck,bossDeck){
   Player.allPlayers[0].deck = newDeck;
+  Player.allPlayers[1].deck = bossDeck;
 };
+
 var assignHand = function(){
-  Player.allPlayers[0].hand = drawCard(Player.allPlayers[0].deck, Player.allPlayers[0].hand);
+  Player.allPlayers[0].hand = drawCard(Player.allPlayers[0]);
+  Player.allPlayers[1].hand = drawCard(Player.allPlayers[1]);
 };
 //This will contain all the game board setup functions
 var boardSetUp = function(newBoard){
