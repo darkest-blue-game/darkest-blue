@@ -10,8 +10,9 @@ var Player = function (name) {
   Player.allPlayers.push(this);
 };
 Player.allPlayers = [];
-var Board = function (allPlayers = []) {
+var Board = function (allPlayers = [], allCards = []) {
   this.allPlayers = allPlayers;
+  this.allCards = allCards;
 };
 
 var Card = function (avatar, type, weight, imageSrc, wildCard) {
@@ -24,10 +25,10 @@ var Card = function (avatar, type, weight, imageSrc, wildCard) {
 
   Card.allCards.push(this);
 };
-  Card.allCards = [];
+Card.allCards = [];
 
 var Deck = function (cards) {
-this.cards = cards;
+  this.cards = cards;
 };
 
 var Hand = function (owner,cards) {
@@ -36,3 +37,14 @@ var Hand = function (owner,cards) {
   Hand.allCards.push(this);
 };
 
+//This is the creation of the game board
+var createBoard = function(){
+  newBoard = new Board;
+  return newBoard;
+};
+
+//This function creates the players and the opponets
+var createPlayer = function(playerName){
+  new Player(playerName);
+  new Player('boss');
+};
