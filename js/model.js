@@ -31,20 +31,81 @@ var Deck = function (cards) {
   this.cards = cards;
 };
 
-var Hand = function (owner,cards) {
+var Hand = function (owner, cards) {
   this.owner = owner;
   this.cards = cards;
   Hand.allCards.push(this);
 };
 
 //This is the creation of the game board
-var createBoard = function(){
+var createBoard = function () {
   newBoard = new Board;
   return newBoard;
 };
 
 //This function creates the players and the opponets
-var createPlayer = function(playerName){
+var createPlayer = function (playerName) {
   new Player(playerName);
   new Player('boss');
 };
+
+/*function createPlayer(playerName) {
+  new Player(playerName);
+}
+*/
+
+function shuffleDeck(deck) {
+  var i = 0;
+  while (i < deck.length) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tempi = deck[i];
+    var tempj = deck[j];
+    deck[i] = tempj;
+    deck[j] = tempi;
+    i++;
+  }
+  return deck;
+}
+
+
+function shuffleDeck(deck) {
+  var i = 0;
+  while (i < deck.length) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tempi = deck[i];
+    var tempj = deck[j];
+    deck[i] = tempj;
+    deck[j] = tempi;
+    i++;
+  }
+  return deck;
+}
+
+/*work in progress
+function drawCard(deck, hand) {
+  if (deck.length === 0) {
+    //shuffle discarded pile and move that to deck
+    console.log('Deck empty');
+  }
+  if (hand.length < 4) {
+    hand.allCards.push(deck[0]);
+
+  }
+}
+*/
+function createCard(avatarName, cardType, cardWeight) {
+  new Card(avatarName, cardType, cardWeight);
+}
+
+createCard('Renee', 'positive', 3);
+createCard('Renee', 'negative', 1);
+createCard('Marisha', 'positive', 2);
+createCard('Marisha', 'negative', 6);
+createCard('Sapana', 'positive', 1);
+createCard('Sapana', 'negative', 2);
+createCard('Fabian', 'positive', 3);
+createCard('Fabian', 'negative', 5);
+createCard('Brandon', 'positive', 6);
+createCard('Brandon', 'negative', 4);
+createCard('Padma', 'positive', 3);
+createCard('Padma', 'negative', 6);
