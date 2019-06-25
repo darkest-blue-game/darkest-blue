@@ -8,6 +8,7 @@ var Player = function (name) {
   this.numberOfTurnsPlayed = 0;
   this.nextTurn = false;
   this.deck = Deck;
+  this.discardPile = Deck;
   this.hand = Hand;
   //array of players
   Player.allPlayers.push(this);
@@ -41,7 +42,7 @@ var Hand = function (owner, cards) {
 };
 Hand.allCards = [];
 //This will create deck
-var createDeck = function(){
+var createDeck = function () {
   newDeck = new Deck(Card.allCards);
   console.log(newDeck);
   return newDeck;
@@ -82,49 +83,105 @@ function shuffleDeck(deck) {
   return deck;
 }
 
+/*
 function drawCard(deck, hand) {
-  if (deck.cards.length === 0) {
-    //deck = shuffleDeck(discardedPile);
-    console.log('Deck empty');
+  for (var i = 0; i < 5; i++) {
+    if (deck.cards.length === 0) {
+      //deck = shuffleDeck(discardedPile);
+      console.log('Deck empty');
+    }
+    if (hand.allCards.length < 4) {
+      hand.allCards.push(deck.cards.pop());
+    } else {
+      break;
+    }
   }
-  if (hand.allCards.length < 4) {
-    hand.allCards.push(deck.cards.pop());
-  }
-
   return hand.allCards;
 }
+*/
+function drawCard(player) {
+  for (var i = 0; i < 5; i++) {
+    if (player.deck.cards.length === 0) {
+      player.deck = shuffleDeck(player.discardPile);
+      console.log('Deck empty');
+    }
+    if (player.hand.allCards.length < 4) {
+      player.hand.allCards.push(player.deck.cards.pop());
+    } else {
+      break;
+    }
+  }
+  return player.hand.allCards;
+}
 
-function playCard(player, card) {
+function playCard(currentPlayer, otherPlayer, card) {
   var healthPoints = 0;
   //var newCard = card;
   if (card.cardType === 'positive') {
-    healthPoints = player.remainingHealthPoints + card.cardWeight;
-    player.remainingHealthPoints = healthPoints;
+    healthPoints = currentPlayer.remainingHealthPoints + card.cardWeight;
+    currentPlayer.remainingHealthPoints = healthPoints;
   }
 
   if (card.cardType === 'negative') {
-    healthPoints = player.remainingHealthPoints - card.cardWeight;
-    player.remainingHealthPoints = healthPoints;
+    healthPoints = otherPlayer.remainingHealthPoints - card.cardWeight;
+    otherPlayer.remainingHealthPoints = healthPoints;
   }
-  
+  currentPlayer.nextTurn = false;
+  otherPlayer.nextTurn = true;
+  currentPlayer.discardPile.cards.push(card);
 }
 
 function createCard(avatarName, cardType, cardWeight) {
   new Card(avatarName, cardType, cardWeight);
 }
 
-createCard('Renee', 'positive', 3);
-createCard('Renee', 'negative', 1);
-createCard('Marisha', 'positive', 2);
-createCard('Marisha', 'negative', 6);
-createCard('Sapana', 'positive', 1);
-createCard('Sapana', 'negative', 2);
-createCard('Fabian', 'positive', 3);
-createCard('Fabian', 'negative', 5);
-createCard('Brandon', 'positive', 6);
-createCard('Brandon', 'negative', 4);
-createCard('Padma', 'positive', 3);
-createCard('Padma', 'negative', 6);
+createCard('Renee', 'positive', Math.floor(Math.random() * 8));
+createCard('Renee', 'negative', Math.floor(Math.random() * 8));
+createCard('Marisha', 'positive', Math.floor(Math.random() * 8));
+createCard('Marisha', 'negative', Math.floor(Math.random() * 8));
+createCard('Sapana', 'positive', Math.floor(Math.random() * 8));
+createCard('Sapana', 'negative', Math.floor(Math.random() * 8));
+createCard('Fabian', 'positive', Math.floor(Math.random() * 8));
+createCard('Fabian', 'negative', Math.floor(Math.random() * 8));
+createCard('Brandon', 'positive', Math.floor(Math.random() * 8));
+createCard('Brandon', 'negative', Math.floor(Math.random() * 8));
+createCard('Padma', 'positive', Math.floor(Math.random() * 8));
+createCard('Padma', 'negative', Math.floor(Math.random() * 8));
+
+createCard('Promila', 'positive', Math.floor(Math.random() * 8));
+createCard('Promila', 'negative', Math.floor(Math.random() * 8));
+createCard('Manish', 'positive', Math.floor(Math.random() * 8));
+createCard('Manish', 'negative', Math.floor(Math.random() * 8));
+createCard('Chris', 'positive', Math.floor(Math.random() * 8));
+createCard('Chris', 'negative', Math.floor(Math.random() * 8));
+createCard('Steven', 'positive', Math.floor(Math.random() * 8));
+createCard('Steven', 'negative', Math.floor(Math.random() * 8));
+createCard('Jack', 'positive', Math.floor(Math.random() * 8));
+createCard('Jack', 'negative', Math.floor(Math.random() * 8));
+createCard('Matt', 'positive', Math.floor(Math.random() * 8));
+createCard('Matt', 'negative', Math.floor(Math.random() * 8));
+createCard('Melfi', 'positive', Math.floor(Math.random() * 8));
+createCard('Melfi', 'negative', Math.floor(Math.random() * 8));
+createCard('Nicholas', 'positive', Math.floor(Math.random() * 8));
+createCard('Nicholas', 'negative', Math.floor(Math.random() * 8));
+createCard('Kevin', 'positive', Math.floor(Math.random() * 8));
+createCard('Kevin', 'negative', Math.floor(Math.random() * 8));
+createCard('Joashen', 'positive', Math.floor(Math.random() * 8));
+createCard('Joashen', 'negative', Math.floor(Math.random() * 8));
+createCard('Jackie', 'positive', Math.floor(Math.random() * 8));
+createCard('Jackie', 'negative', Math.floor(Math.random() * 8));
+createCard('Nhu', 'positive', Math.floor(Math.random() * 8));
+createCard('Nhu', 'negative', Math.floor(Math.random() * 8));
+createCard('Roman', 'positive', Math.floor(Math.random() * 8));
+createCard('Roman', 'negative', Math.floor(Math.random() * 8));
+createCard('Trevor', 'positive', Math.floor(Math.random() * 8));
+createCard('Trevor', 'negative', Math.floor(Math.random() * 8));
+createCard('Travis', 'positive', Math.floor(Math.random() * 8));
+createCard('Travis', 'negative', Math.floor(Math.random() * 8));
+createCard('Peter', 'positive', Math.floor(Math.random() * 8));
+createCard('Peter', 'negative', Math.floor(Math.random() * 8));
+createCard('Jane', 'positive', Math.floor(Math.random() * 8));
+createCard('Jane', 'negative', Math.floor(Math.random() * 8));
 
 /*
 var deck = new Deck(Card.allCards);
