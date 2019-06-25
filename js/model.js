@@ -101,7 +101,7 @@ function drawCard(player) {
       player.deck = shuffleDeck(player.discardPile);
       console.log('Deck empty');
     }
-    if (player.hand.allCards.length < 4) {
+    if (player.hand.allCards.length < 5) {
       player.hand.allCards.push(player.deck.cards.pop());
     } else {
       break;
@@ -144,7 +144,6 @@ createCard('Brandon', 'positive', Math.floor(Math.random() * 8));
 createCard('Brandon', 'negative', Math.floor(Math.random() * 8));
 createCard('Padma', 'positive', Math.floor(Math.random() * 8));
 createCard('Padma', 'negative', Math.floor(Math.random() * 8));
-
 createCard('Promila', 'positive', Math.floor(Math.random() * 8));
 createCard('Promila', 'negative', Math.floor(Math.random() * 8));
 createCard('Manish', 'positive', Math.floor(Math.random() * 8));
