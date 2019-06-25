@@ -37,6 +37,7 @@ var Hand = function (owner, cards) {
   Hand.allCards.push(this);
 };
 
+Hand.allCards = [];
 //This is the creation of the game board
 var createBoard = function () {
   newBoard = new Board;
@@ -54,45 +55,52 @@ var createPlayer = function (playerName) {
 }
 */
 
+
 function shuffleDeck(deck) {
+  //console.log('deck length: ' + deck.cards.length + deck.cards[0].avatarName);
   var i = 0;
-  while (i < deck.length) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var tempi = deck[i];
-    var tempj = deck[j];
-    deck[i] = tempj;
-    deck[j] = tempi;
+  var tempi, tempj = [];
+  while (i < deck.cards.length) {
+    var j = Math.floor(Math.random() * (deck.cards.length));
+    //console.log('i and j ', i, j);
+    tempi = deck.cards[i];
+    tempj = deck.cards[j];
+    deck.cards[i] = tempj;
+    deck.cards[j] = tempi;
+    //console.log('deck[i] ' + deck.cards[i].avatarName);
+    //console.log('deck[j] ' + deck.cards[j].avatarName);
     i++;
   }
   return deck;
 }
 
-
-function shuffleDeck(deck) {
-  var i = 0;
-  while (i < deck.length) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var tempi = deck[i];
-    var tempj = deck[j];
-    deck[i] = tempj;
-    deck[j] = tempi;
-    i++;
-  }
-  return deck;
-}
-
-/*work in progress
 function drawCard(deck, hand) {
-  if (deck.length === 0) {
-    //shuffle discarded pile and move that to deck
+  if (deck.cards.length === 0) {
+    //deck = shuffleDeck(discardedPile);
     console.log('Deck empty');
   }
-  if (hand.length < 4) {
-    hand.allCards.push(deck[0]);
+  if (hand.allCards.length < 4) {
+    hand.allCards.push(deck.cards.pop());
+  }
 
+  return hand.allCards;
+}
+
+function playCard(player, card) {
+  var healthPoints = 0;
+  //var newCard = card;
+  if (card.cardType === 'positive') {
+    healthPoints = player.remainingHealthPoints + card.cardWeight;
+    player.remainingHealthPoints = healthPoints;
+  }
+
+  if (card.cardType === 'negative') {
+    healthPoints = player.remainingHealthPoints - card.cardWeight;
+    player.remainingHealthPoints = healthPoints;
   }
 }
-*/
+
+
 function createCard(avatarName, cardType, cardWeight) {
   new Card(avatarName, cardType, cardWeight);
 }
@@ -109,3 +117,21 @@ createCard('Brandon', 'positive', 6);
 createCard('Brandon', 'negative', 4);
 createCard('Padma', 'positive', 3);
 createCard('Padma', 'negative', 6);
+
+/*
+var deck = new Deck(Card.allCards);
+console.log('deck ' + deck.cards[0].avatarName);
+
+var shuffledDeck = shuffleDeck(deck);
+console.log('shuffled deck ' + shuffledDeck.cards[0].avatarName);
+
+var playerPadma = new Player('Padma');
+//playCard(playerPadma, deck.cards[0]);
+
+var newCard = Card.allCards[0];
+
+playCard(playerPadma, newCard);
+
+console.log('Player points: ' + playerPadma.remainingHealthPoints);
+*/
+
