@@ -8,6 +8,7 @@
 var playerName = document.getElementById('PlayerName');
 var PlayerNameH1 = document.getElementById('Display Name');
 var newBoard;
+var newDeck;
 //This will be the function the save the players name and start the game.
 function handleSubmit(event) {
   // DONE: Prevent the page from reloading
@@ -19,8 +20,18 @@ function handleSubmit(event) {
   var newBoard = createBoard();
   createPlayer(playerName);
   boardSetUp(newBoard);
+  newDeck = createDeck();
+  assignDeck(newDeck);
+  newDeck = shuffleDeck(newDeck);
+  assignHand();
   storeObjects();
 }
+var assignDeck = function(newDeck){
+  Player.allPlayers[0].deck = newDeck;
+};
+var assignHand = function(){
+  Player.allPlayers[0].hand = drawCard(Player.allPlayers[0].deck, Player.allPlayers[0].hand);
+};
 //This will contain all the game board setup functions
 var boardSetUp = function(newBoard){
   newBoard.allPlayers.push(Player.allPlayers[0]);
@@ -41,6 +52,8 @@ var storeObjects = function(){
   localStorage.setItem('Opponent',JSON.stringify(Player.allPlayers[1]));
   localStorage.setItem('Game Board',JSON.stringify(newBoard));
 };
+
+
 //This the eventlistener
 playerName.addEventListener('submit',handleSubmit);
 
