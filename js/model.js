@@ -1,20 +1,17 @@
 'use strict';
-
 //Player constructor
 var Player = function (name) {
   this.name = name;
-  this.remainingHealthPoints = 0;
+  this.remainingHealthPoints = 20;
   this.numberOfCardsPlayed = 0;
   this.numberOfTurnsPlayed = 0;
   this.nextTurn = false;
-
   //array of players
-  Board.allPlayers.push(this);
+  Player.allPlayers.push(this);
 };
-
-
-var Board = function () {
-
+Player.allPlayers = [];
+var Board = function (allPlayers = []) {
+  this.allPlayers = allPlayers;
 };
 
 var Card = function (avatar, type, weight, imageSrc, wildCard) {
@@ -25,14 +22,17 @@ var Card = function (avatar, type, weight, imageSrc, wildCard) {
   this.wildCard = wildCard;
   this.faceUp = false;
 
-  Deck.allCards.push(this);
+  Card.allCards.push(this);
+};
+  Card.allCards = [];
+
+var Deck = function (cards) {
+this.cards = cards;
 };
 
-var Deck = function () {
-
-};
-
-var Hand = function (owner) {
+var Hand = function (owner,cards) {
   this.owner = owner;
+  this.cards = cards;
   Hand.allCards.push(this);
 };
+
