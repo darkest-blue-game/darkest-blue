@@ -39,6 +39,7 @@ var Hand = function (owner, cards) {
   this.cards = cards;
   Hand.allCards.push(this);
 };
+Hand.allCards = [];
 //This will create deck
 var createDeck = function(){
   newDeck = new Deck(Card.allCards);
@@ -87,18 +88,18 @@ function shuffleDeck(deck) {
   return deck;
 }
 
-/*work in progress
+
 function drawCard(deck, hand) {
   if (deck.length === 0) {
     //shuffle discarded pile and move that to deck
     console.log('Deck empty');
   }
-  if (hand.length < 4) {
-    hand.allCards.push(deck[0]);
-
+  if (hand.length < 4) { 
+    hand.allCards.push(deck.cards.pop());
   }
+  return hand.allCards;
 }
-*/
+
 function createCard(avatarName, cardType, cardWeight) {
   new Card(avatarName, cardType, cardWeight);
 }

@@ -22,10 +22,15 @@ function handleSubmit(event) {
   boardSetUp(newBoard);
   newDeck = createDeck();
   assignDeck(newDeck);
+  newDeck = shuffleDeck(newDeck);
+  assignHand();
   storeObjects();
 }
 var assignDeck = function(newDeck){
   Player.allPlayers[0].deck = newDeck;
+};
+var assignHand = function(){
+  Player.allPlayers[0].hand = drawCard(Player.allPlayers[0].deck, Player.allPlayers[0].hand);
 };
 //This will contain all the game board setup functions
 var boardSetUp = function(newBoard){
