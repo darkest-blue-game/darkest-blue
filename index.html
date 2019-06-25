@@ -11,8 +11,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Darkest Blue - Intro Screen</title>
 
-  <link rel="stylesheet" href="../css/reset.css" type="text.css">
-  <link rel="stylesheet" href="../css/style.css" type="text.css">
+  <link rel="stylesheet" href="./css/reset.css" type="text.css">
+  <link rel="stylesheet" href="./css/style.css" type="text.css">
 </head>
 
 <body>
@@ -28,17 +28,19 @@
     
   <main>
       <h1>DARKEST BLUE</h1>
+      <h1 id="Display Name"></h1>
       <div>
-        <img src="./assets/hearthstone.jpg" alt="Broken Link">
+        <img src="./pages/assets/hearthstone.jpg" alt="Broken Link">
       </div>
-      <form action="" id="PlayerName">
-        <input type="text" name="playerName" placeholder="Enter player name here!"><br>
-        <input type="submit" value="PLAY">
+      <form action="./game.html" id="PlayerName">
+        <input type="text" name="playerName"id="name" placeholder="Enter player name here!"><br>
+        <input type="submit" value="PLAY" >
       </form>
   </main>
 
   <script src="../js/model.js"></script>
   <script src="../js/controller.js"></script>
+  <script src="../js/model.js"></script>
   <script src="../js/view.js"></script>
   
   <footer></footer>
