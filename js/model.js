@@ -38,19 +38,19 @@ var Deck = function (cards) {
   this.cards = cards;
 };
 
-var Hand = function (owner, cards) {
-  this.owner = owner;
+var Hand = function (cards) {
   this.cards = cards;
   Hand.allCards.push(this);
 };
 Hand.allCards = [];
+
 //This will create deck
 var createDeck = function () {
   newDeck = new Deck(Card.allCards);
   console.log(newDeck);
   return newDeck;
 };
-Hand.allCards = [];
+
 //This is the creation of the game board
 var createBoard = function () {
   newBoard = new Board;
@@ -98,6 +98,7 @@ function playCard(currentPlayer, otherPlayer, card) {
   if (currentPlayer.name === 'Boss') {
     var index = Math.floor(Math.random() * 5);
     card = currentPlayer.hand.allCards[index];
+    currentPlayer.hand.allCards.splice(index, 1);
   }
   //var newCard = card;
   if (card.cardType === 'positive') {
@@ -111,7 +112,9 @@ function playCard(currentPlayer, otherPlayer, card) {
   }
   currentPlayer.nextTurn = false;
   otherPlayer.nextTurn = true;
+
   currentPlayer.discardPile.cards.push(card);
+
 }
 
 function createCards() {
