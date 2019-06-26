@@ -1,16 +1,18 @@
 'use strict';
 
+
+
+
 // const canvas = document.getElementById('gameBoard');
 // const ctx = canvas.getContext('2d');
 
 // var drawBackground = function () {
 //   var context = document.getElementById('background-layer').getContext('2d');
-
 //   var gradient = context.createRadialGradient(110, 90, 30, 100, 100, 70);
 //   gradient.addColorStop(0, "white");
 //   gradient.addColorStop(0.9, "#201d57");
 //   gradient.addColorStop(1, "black");
-
+  
 //   context.fillStyle = gradient;
 //   context.fillRect(10, 10, 400, 400);
 // };

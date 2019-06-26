@@ -12,53 +12,95 @@
 </head>
 
 <body>
-  <header>
 
-    <nav>
-      <a href="../index.html">INTRO</a>
-      <a href="./game.html">GAME</a>
-      <a href="./result.html">RESULTS</a>
-      <button>MENU</button>
-    </nav>
-  </header>
   <main>
-    <h1>DARKEST BLUE</h1>
 
-    <h2>OPPONENT</h2>
-    <img src="" alt="">
-    <marquee behavior="slide" direction="down" style="width: 25%;">Lorem ipsum, dolor sit amet consectetur adipisicing
-      elit. Mollitia beatae voluptatem, minus adipisci pariatur placeat sit quidem quaerat iste, officia nisi
-      doloremque, dolor explicabo neque consequuntur voluptatum ullam totam corporis!
-    </marquee>
+    <!-- Container for the left of the screen. -->
+    <div class="triptych-containers" id="game-screen-left">
+      <header>
 
-    <div id="canvasField">
-      <canvas id="ui-layer" width="800" height="800" style="position: absolute;  z-index: 2;"></canvas>
-      <canvas id="game-board-layer" width="800" height="800" style="position: absolute;  z-index: 1;"></canvas>
-      <canvas id="background-layer" width="800" height="800" style="position: absolute;  z-index: 0;"></canvas>
+        <nav>
+          <a href="./index.html">INTRO</a>
+          <a href="./game.html">GAME</a>
+          <a href="./result.html">RESULTS</a>
+          <button>MENU</button>
+        </nav>
+      </header>
+      <marquee behavior="slide" direction="down" style="width: 25%;">Lorem ipsum, dolor sit amet consectetur adipisicing
+        elit. Mollitia beatae voluptatem, minus adipisci pariatur placeat sit quidem quaerat iste, officia nisi
+        doloremque, dolor explicabo neque consequuntur voluptatum ullam totam corporis!
+      </marquee>
+      <div class="health-bars">
+        HEALTH BARS
+        <img src="https://placehold.it/60x200/111" alt="">
+      </div>
+
     </div>
 
-    <h1>TURN</h1>
+    <!-- Container for the center of the screen. -->
+    <div class="triptych-containers" id="game-screen-center">
 
-    <h1 id="Display Name"></h1>
-    <img src="" alt="">
+      <div class="players">
+        <h1 id="opponent-name">OPPONENT</h1>
+        <img src="https://placehold.it/100x100/111" alt="" class="portraits">
+      </div>
 
-    <section id="PlayerHand">
-      <div id="5">
-        <img src="https://placehold.it/50x75/111" />
+      <div class="hands">
+          <div>
+            <img src="https://placehold.it/50x70/111" alt="">
+            <img src="https://placehold.it/50x70/111" alt="">
+            <img src="https://placehold.it/50x70/111" alt="">
+            <img src="https://placehold.it/50x70/111" alt="">
+            <img src="https://placehold.it/50x70/111" alt="">
+          </div>
+        </div>
+
+
+      <div id="game-board">
+        <div class="decks" id="opponent-deck">
+          DECKS
+          <img src="https://placehold.it/50x70/111" alt="">
+        </div>
+
+        <div id="play-field">
+        </div>
+        <div class="decks" id="player-deck">
+          DECKS
+          <img src="https://placehold.it/50x70/111" alt="">
+        </div>
       </div>
-      <div id="6">
-        <img src="https://placehold.it/50x75/111" />
+
+      <div class="hands">
+        <div>
+          <img src="https://placehold.it/50x70/111" alt="">
+          <img src="https://placehold.it/50x70/111" alt="">
+          <img src="https://placehold.it/50x70/111" alt="">
+          <img src="https://placehold.it/50x70/111" alt="">
+          <img src="https://placehold.it/50x70/111" alt="">
+        </div>
       </div>
-      <div id="7">
-        <img src="https://placehold.it/50x75/111" />
+
+      <div class="players">
+        <h1 id="player-name">PLAYER</h1>
+        <img src="https://placehold.it/100x100/111" alt="">
       </div>
-      <div id="8">
-        <img src="https://placehold.it/50x75/111" />
+
+
+    </div>
+
+    <!-- Container for the right of the screen. -->
+    <div class="triptych-containers" id="game-screen-right">
+      <div class="health-bars">
+        HEALTH BARS
+        <img src="https://placehold.it/60x200/111" alt="">
+
       </div>
-      <div id="9">
-        <img src="https://placehold.it/50x75/111" />
-      </div>
-    </section>
+      <h1>TURN</h1>
+
+
+    </div>
+
+    
   </main>
 
   <script src="../js/model.js"></script>
@@ -69,3 +111,9 @@
 </body>
 
 </html>
+
+<!-- <div id="canvasField">
+    <canvas id="ui-layer" width="800" height="800" style="position: absolute;  z-index: 2;"></canvas>
+    <canvas id="game-board-layer" width="800" height="800" style="position: absolute;  z-index: 1;"></canvas>
+    <canvas id="background-layer" width="800" height="800" style="position: absolute;  z-index: 0;"></canvas>
+  </div> -->
