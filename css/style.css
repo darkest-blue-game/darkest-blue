@@ -2,8 +2,95 @@
   box-sizing: border-box;
 }
 
-#canvasField {
+body {
+  height: 1000px;
+  width: 960px;
+  background-color: olive;
+}
+
+.triptych-containers {
+  float: left;
+  border: red 5px solid;
+}
+
+#game-screen-left{
+  width: 20%;
+}
+
+#game-screen-center{
+  width: 60%;
+}
+
+#game-screen-right{
+  width: 20%;
+}
+
+#game-board {
+  height: 460px;
+  width: 500px;
+  background-image: url("../pages/assets/old-vintage-map-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+}
+
+#play-field {
+  height: 370px;
+}
+
+.portraits {
+  border-radius: 25px;
+}
+
+.hands > * {
+  display: inline-block;
+  
+}
+
+.hands > div {
+  background-color: blue;
+}
+
+.hands {
+  text-align: center;
+  background-color: silver;
+}
+
+#opponent-deck {
+  float: left;
+}
+
+#player-deck {
+  float: right;
+}
+
+.players > * {
+  display: inline-block;
+  
+}
+
+.players {
+  text-align: center;
+  height: 10%;
+  width: 18%;
+  background-color: darkmagenta;
+  margin: auto;
+}
+
+#opponent-name {
+  float: left;
+}
+
+/* #game-title {
+  font-size: 40px;
+  font-style: bold;
+  color: #201d57;
+  text-decoration: underline;
+  text-align: center;
+} */
+
+/* #canvasField {
   height: 800px;
   width: 800px;
   background-color: blue;
-}
+} */
