@@ -6,7 +6,7 @@
 
 //This will be all global Variables
 var playerForm = document.getElementById('Player');
-var playerNameH1 = document.getElementById('Display Name');
+var playerNameH1 = document.getElementById('player-name');
 var playerHand = document.getElementById('PlayerHand');
 // var playerHand = document.getElementById('Player');
 var newBoard;
@@ -19,12 +19,14 @@ function handleSubmit(event){
   event.preventDefault();
   // Do all the things ...
   playerName = document.getElementById('name').value;
+  console.log(playerName);
   storePlayerName(playerName);
   location.href ='./pages/game.html';
 }
 
 var secondLoad = function(){
   var newBoard = createBoard();
+  showPlayerName();
   createPlayer(playerName);
   boardSetUp(newBoard);
   newDeck = createDeck();
@@ -32,28 +34,30 @@ var secondLoad = function(){
   newDeck = shuffleDeck(newDeck);
   assignHand();
   storeObjects();
-  showPlayerName();
   playersTurn();
 };
 //This will allow players to select cards to attack with or defend
 function handleGamePlay(event){
   console.log('handling game');
   event.preventDefault();
-  for(var i = 0; i < 2; i++){
-    var players = selectPlayer();
-    playCard(players[0],players[1], players[0].card);
-    if(Player.allPlayers[0].remainingHealthPoints !==0 && Player.allPlayers[1].remainingHealthPoints !== 0){
-      location.href ='./pages/game.html';
-    }
+
+  var players = selectPlayer();
+  console.log(players);
+  playCard(players[0],players[1], players[2][0]);
+  playCard(Player.allPlayers[1],Player.allPlayers[0]);
+  if(Player.allPlayers[0].remainingHealthPoints === 0 || Player.allPlayers[1].remainingHealthPoints === 0){
+    location.href ='./pages/results.html';
   }
+
 }
 //This will select the card to play
 var selectPlayer = function(){
   if(Player.allPlayers[0].nextTurn === true){
-    Player.allPlayers[0].card = event.target;
-    var id = Player.allPlayers[0].card.id;
-    Player.allPlayers[0].hand.splice(id - 5,1);
-    return[Player.allPlayers[0], Player.allPlayers[1]];
+    var cardPlayed = event.target;
+    var id = cardPlayed.id;
+    cardPlayed = Player.allPlayers[0].hand.splice(id - 5,1);
+    console.log(cardPlayed);
+    return[Player.allPlayers[0], Player.allPlayers[1],cardPlayed];
   }
   else{
     return[Player.allPlayers[1],Player.allPlayers[0]];
@@ -71,28 +75,7 @@ var assignHand = function(){
   for(var i = 0 ; i < Player.allPlayers[0].hand.length; i++){
     var j = i + 5;
     var k = JSON.stringify(j);
-    console.log(k);
     var divId = document.getElementById(k);
-    console.log(divId);
-    var p1 = document.createElement('p');
-    var p2 = document.createElement('p');
-    var p3 = document.createElement('p');
-    p1.textContent = Player.allPlayers[0].hand[i].cardWeight;
-    p2.textContent = Player.allPlayers[0].hand[i].avatarName;
-    p3.textContent = Player.allPlayers[0].hand[i].cardtype;
-    divId.appendChild(p1);
-    divId.appendChild(p2);
-    divId.appendChild(p3);
-  }
-};
-
-var setHand = function(event){
-  for(var i = 0 ; i < Player.allPlayers[0].hand.length; i++){
-    var j = i + 5;
-    var k = JSON.stringify(j);
-    console.log(k);
-    var divId = document.getElementById(k);
-    console.log(divId);
     var p1 = document.createElement('p');
     var p2 = document.createElement('p');
     var p3 = document.createElement('p');
@@ -111,12 +94,12 @@ var boardSetUp = function(newBoard){
 };
 //This is to display the players name
 var showPlayerName = function(){
-  var displayName = localStorage.getItem('Player Name');
-  playerNameH1.textContent = displayName;
+  playerName = localStorage.getItem('PlayerName');
+  playerNameH1.textContent = playerName;
 };
 //This will store the players name
 var storePlayerName = function(PlayerName){
-  localStorage.setItem('Player',JSON.stringify(PlayerName));
+  localStorage.setItem('PlayerName',PlayerName);
 };
 //This will store the player objects to local storage
 var storeObjects = function(){
@@ -124,17 +107,26 @@ var storeObjects = function(){
   localStorage.setItem('Opponent',JSON.stringify(Player.allPlayers[1]));
   localStorage.setItem('Game Board',JSON.stringify(newBoard));
 };
+//This will randomly choose player to start
 var playersTurn = function(){
-  var index = Math.floor(Math.random());
-  Player.allPlayers[index].nextTurn = true;
+  // var index = Math.floor(Math.random()* 2);
+  // Player.allPlayers[index].nextTurn = true;
+  // console.log(Player.allPlayers[index]);
 };
-//This the eventlistener
+
+//These are eventlisteners
 if(playerForm !== null){
   playerForm.addEventListener('submit',handleSubmit);
 }
 if(playerHand !== null){
-  playerHand.addEventListener('click',handleGamePlay);
   secondLoad();
+  if(Player.allPlayers[0].nextTurn === true){
+    playerHand.addEventListener('click',handleGamePlay);
+  }
+  // else{
+  //   var players = selectPlayer();
+  //   playCard(players[0],players[1]);
+  // }
 }
 
 
