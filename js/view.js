@@ -38,7 +38,11 @@
 
 // drawUI();
 
-
+var firstCardTag = document.getElementById('first-card');
+var secondCardTag = document.getElementById('second-card');
+var thirdCardTag = document.getElementById('third-card');
+var fourthCardTag = document.getElementById('fourth-card');
+var fifthCardTag = document.getElementById('fifth-card');
 
 
 // Make functions to draw these shapes? Hmmmm...IDK we shall see. It's so specific and aren't they all just one time uses? Blah.
