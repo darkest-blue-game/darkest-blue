@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+#canvasField {
+  height: 800px;
+  width: 800px;
+  background-color: blue;
+}
