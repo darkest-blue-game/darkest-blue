@@ -10,6 +10,7 @@ var Player = function (name) {
   this.numberOfCardsPlayed = 0;
   this.numberOfTurnsPlayed = 0;
   this.nextTurn = false;
+  this.card = Card;
   this.deck = Deck;
   this.discardPile = Deck;
   this.hand = Hand;
