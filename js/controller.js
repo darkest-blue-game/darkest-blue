@@ -5,9 +5,10 @@
 
 
 //This will be all global Variables
-var playerName = document.getElementById('PlayerName');
+var playerForm = document.getElementById('PlayerName');
 var PlayerNameH1 = document.getElementById('Display Name');
 var newBoard;
+var playerName;
 var newDeck;
 var bossDeck = createDeck();
 //This will be the function the save the players name and start the game.
@@ -17,7 +18,7 @@ function handleSubmit(event) {
   // Do all the things ...
   playerName = document.getElementById('name').value;
   storePlayerName(playerName);
-  showPlayerName();
+  location.href ='./pages/game.html';
   var newBoard = createBoard();
   createPlayer(playerName);
   boardSetUp(newBoard);
@@ -26,6 +27,7 @@ function handleSubmit(event) {
   newDeck = shuffleDeck(newDeck);
   assignHand();
   storeObjects();
+  showPlayerName();
 }
 var assignDeck = function(newDeck,bossDeck){
   Player.allPlayers[0].deck = newDeck;
@@ -62,7 +64,8 @@ var playersTurn = function(){
 };
 
 //This the eventlistener
-playerName.addEventListener('submit',handleSubmit);
+playerForm.addEventListener('submit',handleSubmit);
+
 
 
 
