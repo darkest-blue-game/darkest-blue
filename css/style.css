@@ -134,6 +134,7 @@ input {
 } */
 
 progress {
+  /* todo: there should be no whitespace between the unit and the value */
   height: 20 px;
 }
 /* #game-title {

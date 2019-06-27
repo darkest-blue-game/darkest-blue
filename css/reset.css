@@ -19,6 +19,8 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
+	/* todo: properties like 'font' overwrite sub-properties like 'font-size'
+	   solution: swap them */
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
@@ -39,6 +41,7 @@ blockquote, q {
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
+	/* todo: another copy paste error? */
 	content: '';
 	content: none;
 }

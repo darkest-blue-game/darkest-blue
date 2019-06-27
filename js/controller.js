@@ -35,6 +35,7 @@ function handleSubmit(event) {
 //This will allow players to select cards to attack with or defend
 function handleGamePlay(event) {
   event.preventDefault();
+  // todo: pass 'event' or 'event.target' into 'selectPlayer' if you need it
   var players = selectPlayer();
   console.log(players);
   playCard(players[0],players[1], players[2]);
@@ -49,6 +50,7 @@ function handleGamePlay(event) {
 //This will select the card to play
 var selectPlayer = function(){
   if(Player.allPlayers[0].nextTurn === true){
+    // todo: 'event' does not exist in this function, you need to pass it in
     var cardPlayed = event.target;
     var id = cardPlayed.id;
     cardPlayed = Player.allPlayers[0].hand.splice(id - 5,1)[0];
@@ -115,6 +117,7 @@ if(playerForm !== null){
   playerForm.addEventListener('submit',handleSubmit);
 }
 if(playerHand !== null){
+  // todo: this function does not exist
   secondLoad();
   if(Player.allPlayers[0].nextTurn === true){
     playerHand.addEventListener('click',handleGamePlay);
