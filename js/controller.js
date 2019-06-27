@@ -11,6 +11,11 @@ var playerHand = document.getElementById('PlayerHand');
 var newBoard;
 var playerName;
 var newDeck;
+var winnerElement = document.getElementById('winner');
+var winnerHealthElement = document.getElementById('winner-remaining-health');
+var playerCards = document.getElementById('player-cards');
+var opponentCards = document.getElementById('opponent-cards');
+
 var bossDeck = createDeck();
 //This will be the function the save the players name and start the game.
 function handleSubmit(event) {
@@ -23,7 +28,7 @@ function handleSubmit(event) {
   location.href = './pages/game.html';
 }
 
-var secondLoad = function(){
+var secondLoad = function () {
   var newBoard = createBoard();
   showPlayerName();
   createPlayer(playerName);
@@ -41,24 +46,25 @@ function handleGamePlay(event) {
   event.preventDefault();
   var players = selectPlayer();
   console.log(players);
-  playCard(players[0],players[1], players[2]);
-  playCard(Player.allPlayers[1],Player.allPlayers[0]);
-  if(Player.allPlayers[0].remainingHealthPoints <= 0 || Player.allPlayers[1].remainingHealthPoints <= 0){
-    location.href ='./result.html';
+  playCard(players[0], players[1], players[2]);
+  playCard(Player.allPlayers[1], Player.allPlayers[0]);
+  if (Player.allPlayers[0].remainingHealthPoints <= 0 || Player.allPlayers[1].remainingHealthPoints <= 0) {
+    storeObjects();
+    location.href = './result.html';
   }
   console.log(Player.allPlayers[0].hand);
   assignHand(players[3]);
 }
 
 //This will select the card to play
-var selectPlayer = function(){
-  if(Player.allPlayers[0].nextTurn === true){
+var selectPlayer = function () {
+  if (Player.allPlayers[0].nextTurn === true) {
     var cardPlayed = event.target;
     var id = cardPlayed.id;
     console.log(cardPlayed);
     console.log(id);
-    cardPlayed = Player.allPlayers[0].hand.splice(id -5,1)[0];
-    return[Player.allPlayers[0], Player.allPlayers[1],cardPlayed,id -5];
+    cardPlayed = Player.allPlayers[0].hand.splice(id - 5, 1)[0];
+    return [Player.allPlayers[0], Player.allPlayers[1], cardPlayed, id - 5];
   }
   else {
     return [Player.allPlayers[1], Player.allPlayers[0]];
@@ -71,31 +77,31 @@ var assignDeck = function (newDeck, bossDeck) {
   Player.allPlayers[1].deck = bossDeck;
 };
 var assignHand = function (handIndex) {
-  Player.allPlayers[0].hand = drawCard(Player.allPlayers[0],handIndex);
+  Player.allPlayers[0].hand = drawCard(Player.allPlayers[0], handIndex);
   Player.allPlayers[1].hand = drawCard(Player.allPlayers[1]);
-  for(var i = 0 ; i < Player.allPlayers[0].hand.length; i++){
+  for (var i = 0; i < Player.allPlayers[0].hand.length; i++) {
     var j = i + 5;
     var k = JSON.stringify(j);
     var divId = document.getElementById(k);
 
-    if(handIndex === undefined){
+    if (handIndex === undefined) {
       var p1 = document.createElement('p');
       var p2 = document.createElement('p');
       var p3 = document.createElement('p');
-      p1.setAttribute('id', 'p1'+ k);
-      p2.setAttribute('id', 'p2'+ k);
-      p3.setAttribute('id', 'p3'+ k);
+      p1.setAttribute('id', 'p1' + k);
+      p2.setAttribute('id', 'p2' + k);
+      p3.setAttribute('id', 'p3' + k);
       divId.appendChild(p1);
       divId.appendChild(p2);
       divId.appendChild(p3);
     }
-    else{
-      p1 = document.getElementById('p1'+k);
-      p2 = document.getElementById('p2'+k);
-      p3 = document.getElementById('p3'+k);
-      p1.textContent='';
-      p2.textContent='';
-      p3.textContent='';
+    else {
+      p1 = document.getElementById('p1' + k);
+      p2 = document.getElementById('p2' + k);
+      p3 = document.getElementById('p3' + k);
+      p1.textContent = '';
+      p2.textContent = '';
+      p3.textContent = '';
     }
     p1.textContent = Player.allPlayers[0].hand[i].cardWeight;
     p2.textContent = Player.allPlayers[0].hand[i].avatarName;
@@ -111,14 +117,14 @@ var boardSetUp = function (newBoard) {
 };
 
 //This is to display the players name
-var showPlayerName = function(){
+var showPlayerName = function () {
   playerName = localStorage.getItem('PlayerName');
   playerNameH1.textContent = playerName;
 };
 
 //This will store the players name
-var storePlayerName = function(PlayerName){
-  localStorage.setItem('PlayerName',PlayerName);
+var storePlayerName = function (PlayerName) {
+  localStorage.setItem('PlayerName', PlayerName);
 };
 
 //This will store the player objects to local storage
@@ -129,20 +135,20 @@ var storeObjects = function () {
 };
 
 //This will randomly choose player to start
-var playersTurn = function(){
+var playersTurn = function () {
   // var index = Math.floor(Math.random()* 2);
   // Player.allPlayers[index].nextTurn = true;
   // console.log(Player.allPlayers[index]);
 };
 
 //These are eventlisteners
-if(playerForm !== null){
-  playerForm.addEventListener('submit',handleSubmit);
+if (playerForm !== null) {
+  playerForm.addEventListener('submit', handleSubmit);
 }
-if(playerHand !== null){
+if (playerHand !== null) {
   secondLoad();
-  if(Player.allPlayers[0].nextTurn === true){
-    playerHand.addEventListener('click',handleGamePlay,true);
+  if (Player.allPlayers[0].nextTurn === true) {
+    playerHand.addEventListener('click', handleGamePlay, true);
   }
   // else{
   //   var players = selectPlayer();
@@ -150,4 +156,27 @@ if(playerHand !== null){
   // }
 }
 
+if (winnerElement !== null) {
+  console.log('in winner element');
+  determineWinner();
+}
+function determineWinner() {
+  var playerFromStorage = localStorage.getItem('Player');
+  var unstringifyPlayer = JSON.parse(playerFromStorage);
 
+  var opponentFromStorage = localStorage.getItem('Opponent');
+  var unstringifyOpponent = JSON.parse(opponentFromStorage);
+
+  if (unstringifyPlayer.remainingHealthPoints <= 0) {
+    winnerElement.textContent = 'Winner: ' + unstringifyOpponent.name;
+    winnerHealthElement.textContent = 'Remaining Health: ' + unstringifyOpponent.remainingHealthPoints;
+  } else {
+    if (unstringifyOpponent.remainingHealthPoints <= 0) {
+      winnerElement.textContent = 'Winner: ' + unstringifyPlayer.name;
+      winnerHealthElement.textContent = 'Remaining Health: ' + unstringifyPlayer.remainingHealthPoints;
+    }
+  }
+  opponentCards.textContent = 'Number of cards played by opponent: ' + unstringifyOpponent.numberOfCardsPlayed;
+  playerCards.textContent = 'Number of cards played by player: ' + unstringifyPlayer.numberOfCardsPlayed;
+
+}
