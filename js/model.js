@@ -1,6 +1,7 @@
 'use strict';
 var opponentDeck = [];
-var classMembers = ['Renee', 'Marisha', 'Promila', 'Manish', 'Chris', 'Sapana', 'Padma', 'Steven', 'Matt', 'Jack', 'Melfi', 'Nicholas', 'Kevin', 'Brandon', 'Fabian', 'Joashin', 'Peter', 'Trevor', 'Travis', 'Jackie', 'Jane', 'Roman', 'Nhu'];
+
+var classMembers = ['Renee', 'Marisha', 'Promila', 'Manish', 'Chris', 'Sapana', 'Padma', 'Steven', 'Matt', 'Jack', 'Melfi', 'Nicholas', 'Kevin', 'Brandon', 'Fabian', 'Joachen', 'Peter', 'Trevor', 'Travis', 'Jackie', 'Jane', 'Roman', 'Nhu'];
 
 //Player constructor
 var Player = function (name) {
@@ -64,6 +65,7 @@ var createPlayer = function (playerName) {
   new Player(playerName);
   Player.allPlayers[0].nextTurn = true;
   new Player('boss');
+  Player.allPlayers[1].remainingHealthPoints = 2;
 };
 
 function shuffleDeck(deck) {
@@ -97,6 +99,7 @@ function drawCard(player, handIndex) {
   }
   return player.hand;
 }
+var logArray = '';
 
 function playCard(currentPlayer, otherPlayer, card) {
   var healthPoints = 0;
@@ -110,6 +113,10 @@ function playCard(currentPlayer, otherPlayer, card) {
 
   var playerHealth = document.getElementById('playerHealth');
   var opponentHealth = document.getElementById('opponentHealth');
+  var gameLog = document.getElementById('game-log');
+
+  var breakTag = '<br>';
+  //var breakTag = document.createElement('<br>');
 
   if (card.cardType === 'heal') {
     healthPoints = currentPlayer.remainingHealthPoints + card.cardWeight;
@@ -119,6 +126,8 @@ function playCard(currentPlayer, otherPlayer, card) {
     } else {
       updateHealth(playerHealth, card.cardType, card.cardWeight);
     }
+    console.log('Log Array: ' + logArray);
+    logArray = logArray + currentPlayer.name + ' healed by gaining ' + JSON.stringify(card.cardWeight) + ' points. ' + breakTag;
   }
 
   if (card.cardType === 'attack') {
@@ -129,13 +138,14 @@ function playCard(currentPlayer, otherPlayer, card) {
     } else {
       updateHealth(opponentHealth, card.cardType, card.cardWeight);
     }
+
+    logArray = logArray + currentPlayer.name + ' attacked opponent for ' + JSON.stringify(card.cardWeight) + ' points. ' + breakTag;
   }
   currentPlayer.nextTurn = false;
   otherPlayer.nextTurn = true;
   currentPlayer.discardPile.cards.push(card);
   currentPlayer.numberOfCardsPlayed++;
-  console.log(currentPlayer.remainingHealthPoints);
-  console.log(otherPlayer.remainingHealthPoints);
+  gameLog.innerHTML = logArray;
 }
 
 function createCards() {
@@ -156,24 +166,5 @@ function updateHealth(healthElement, cardType, cardWeight) {
   }
 }
 
-function determineWinner() {
-  var winnerElement = document.getElementById('winner');
-  var winnerHealthElement = document.getElementById('winner-remaining-health');
 
-  var playerFromStorage = localStorage.getItem('Player');
-  var unstringifyPlayer = JSON.parse(playerFromStorage);
-
-  var opponentFromStorage = localStorage.getItem('Opponent');
-  var unstringifyOpponent = JSON.parse(opponentFromStorage);
-
-  if ((unstringifyPlayer.remainingHealthPoints === 0) && (unstringifyOpponent.remainingHealthPoints !== 0)) {
-    winnerElement.textContent = 'Winner: ' + unstringifyOpponent.name;
-    winnerHealthElement.textContent = 'Remaining Health: ' + unstringifyOpponent.remainingHealthPoints;
-  } else {
-    if ((unstringifyPlayer.remainingHealthPoints !== 0) && (unstringifyOpponent.remainingHealthPoints === 0)) {
-      winnerElement.textContent = 'Winner: ' + unstringifyPlayer.name;
-      winnerHealthElement.textContent = 'Remaining Health: ' + unstringifyPlayer.remainingHealthPoints;
-    }
-  }
-}
 
