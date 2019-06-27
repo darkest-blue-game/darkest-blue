@@ -43,8 +43,8 @@ function handleGamePlay(event) {
   console.log(players);
   playCard(players[0],players[1], players[2]);
   playCard(Player.allPlayers[1],Player.allPlayers[0]);
-  if(Player.allPlayers[0].remainingHealthPoints === 0 || Player.allPlayers[1].remainingHealthPoints === 0){
-    location.href ='./pages/results.html';
+  if(Player.allPlayers[0].remainingHealthPoints <= 0 || Player.allPlayers[1].remainingHealthPoints <= 0){
+    location.href ='./result.html';
   }
   console.log(Player.allPlayers[0].hand);
   assignHand(players[3]);

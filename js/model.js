@@ -65,6 +65,7 @@ var createPlayer = function (playerName) {
   new Player(playerName);
   Player.allPlayers[0].nextTurn = true;
   new Player('boss');
+  Player.allPlayers[1].remainingHealthPoints = 1;
 };
 
 function shuffleDeck(deck) {
