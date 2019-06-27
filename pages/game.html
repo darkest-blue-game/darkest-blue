@@ -20,19 +20,20 @@
       <header>
 
         <nav>
-          <a href="./index.html">INTRO</a>
+          <a href="../index.html">INTRO</a>
           <a href="./game.html">GAME</a>
           <a href="./result.html">RESULTS</a>
           <button>MENU</button>
         </nav>
       </header>
-      <marquee behavior="slide" direction="down" style="width: 25%;">Lorem ipsum, dolor sit amet consectetur adipisicing
-        elit. Mollitia beatae voluptatem, minus adipisci pariatur placeat sit quidem quaerat iste, officia nisi
-        doloremque, dolor explicabo neque consequuntur voluptatum ullam totam corporis!
-      </marquee>
+      <div id="marquee-container">
+          <marquee behavior="slide" direction="down" style="width: 100%" id="game-log">Lorem ipsum, dolor sit amet consectetur adipisicing
+              elit. Mollitia beatae voluptatem, minus adipisci pariatur placeat sit quidem quaerat iste, officia nisi
+              doloremque, dolor explicabo neque consequuntur voluptatum ullam totam corporis!
+            </marquee>
+      </div>  
       <div class="health-bars">
-        HEALTH BARS
-        <img src="https://placehold.it/60x200/111" alt="">
+        
       </div>
 
     </div>
@@ -40,41 +41,79 @@
     <!-- Container for the center of the screen. -->
     <div class="triptych-containers" id="game-screen-center">
 
+      <!-- Opponent image and hand. -->
       <div class="players">
         <h1 id="opponent-name">OPPONENT</h1>
         <img src="https://placehold.it/100x100/111" alt="" class="portraits">
       </div>
 
       <div class="hands">
-        <div>
-          <img src="https://placehold.it/50x70/111" alt="">
-          <img src="https://placehold.it/50x70/111" alt="">
-          <img src="https://placehold.it/50x70/111" alt="">
-          <img src="https://placehold.it/50x70/111" alt="">
-          <img src="https://placehold.it/50x70/111" alt="">
+
+        <div class="cards-in-hand">
+          <div class="cards" id="0">
+            <img src="https://placehold.it/50x70/111" alt="">
+            <p>TEXT</p>
+          </div>
+          <div class="cards" id="1">
+            <img src="https://placehold.it/50x70/111" alt="">
+            <p>TEXT</p>
+          </div>
+          <div class="cards" id="2">
+            <img src="https://placehold.it/50x70/111" alt="">
+            <p>TEXT</p>
+          </div>
+          <div class="cards" id="3">
+            <img src="https://placehold.it/50x70/111" alt="">
+            <p>TEXT</p>
+          </div>
+          <div class="cards" id="4">
+            <img src="https://placehold.it/50x70/111" alt="">
+            <p>TEXT</p>
+          </div>
+
         </div>
       </div>
 
-
+      <!-- Game board  -->
       <div id="game-board">
         <div class="decks" id="opponent-deck">
-          DECKS
           <img src="https://placehold.it/50x70/111" alt="">
         </div>
 
         <div id="play-field">
         </div>
+
         <div class="decks" id="player-deck">
-          DECKS
           <img src="https://placehold.it/50x70/111" alt="">
         </div>
       </div>
-      <div id="PlayerHand">
-         <div id="5"><img src="https://placehold.it/50x70/111" alt=""></div> 
-         <div id="6"><img src="https://placehold.it/50x70/111" alt=""></div> 
-         <div id="7"><img src="https://placehold.it/50x70/111" alt=""></div> 
-         <div id="8"><img src="https://placehold.it/50x70/111" alt=""></div> 
-         <div id="9"><img src="https://placehold.it/50x70/111" alt=""></div> 
+
+
+      <!-- Player hand and image. -->
+      <div class="hands">
+        <div class="cards-in-hand">
+          <div id="">
+            <img src="https://placehold.it/50x70/111" alt="">
+            <p>TEXT</p>
+          </div>
+          <div>
+            <img src="https://placehold.it/50x70/111" alt="">
+            <p>TEXT</p>
+          </div>
+          <div>
+            <img src="https://placehold.it/50x70/111" alt="">
+            <p>TEXT</p>
+          </div>
+          <div>
+            <img src="https://placehold.it/50x70/111" alt="">
+            <p>TEXT</p>
+          </div>
+          <div>
+            <img src="https://placehold.it/50x70/111" alt="">
+            <p>TEXT</p>
+          </div>
+        </div>
+
       </div>
       <div class="players">
         <h1 id="player-name">PLAYER</h1>
@@ -87,16 +126,12 @@
     <!-- Container for the right of the screen. -->
     <div class="triptych-containers" id="game-screen-right">
       <div class="health-bars">
-        HEALTH BARS
-        <img src="https://placehold.it/60x200/111" alt="">
 
       </div>
       <h1>TURN</h1>
 
-
     </div>
 
-    
   </main>
 
   <script src="../js/model.js"></script>
@@ -107,9 +142,3 @@
 </body>
 
 </html>
-
-<!-- <div id="canvasField">
-    <canvas id="ui-layer" width="800" height="800" style="position: absolute;  z-index: 2;"></canvas>
-    <canvas id="game-board-layer" width="800" height="800" style="position: absolute;  z-index: 1;"></canvas>
-    <canvas id="background-layer" width="800" height="800" style="position: absolute;  z-index: 0;"></canvas>
-  </div> -->
