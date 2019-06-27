@@ -18,7 +18,6 @@
     <!-- Container for the left of the screen. -->
     <div class="triptych-containers" id="game-screen-left">
       <header>
-
         <nav>
           <a href="../index.html">INTRO</a>
           <a href="./game.html">GAME</a>
@@ -26,14 +25,12 @@
           <button>MENU</button>
         </nav>
       </header>
-      <div id="marquee-container">
-        <marquee behavior="scroll" direction="down" width=100% height=350px id="game-log">Lorem ipsum, dolor sit
-          amet
-          consectetur adipisicing
-          elit. Mollitia beatae voluptatem, minus adipisci pariatur placeat sit quidem quaerat iste, officia nisi
-          doloremque, dolor explicabo neque consequuntur voluptatum ullam totam corporis!
-        </marquee>
+
+      <div id="scrollbox-container">
+        <div id="game-log">
+        </div>
       </div>
+
       <div class="health-bars">
         PLAYER HEALTH
         <progress id="playerHealth" value="20" max="20"></progress>
@@ -79,50 +76,49 @@
 
       <!-- Game board  -->
       <div id="game-board">
+
         <div class="decks" id="opponent-deck">
-          <img src="https://placehold.it/50x70/111" alt="">
         </div>
 
         <div id="play-field">
         </div>
 
         <div class="decks" id="player-deck">
-          <img src="https://placehold.it/50x70/111" alt="">
         </div>
+
       </div>
 
 
       <!-- Player hand and image. -->
       <div class="hands" id="PlayerHand">
         <div class="cards-in-hand">
+
           <div class="cards players-cards" id="5">
             <img src="https://placehold.it/50x70/111" alt="" id="5">
-
           </div>
+
           <div class="cards players-cards" id="6">
             <img src="https://placehold.it/50x70/111" alt="" id="6">
-
           </div>
+
           <div class="cards players-cards" id="7">
             <img src="https://placehold.it/50x70/111" alt="" id="7">
-
           </div>
+
           <div class="cards players-cards" id="8">
             <img src="https://placehold.it/50x70/111" alt="" id="8">
-
           </div>
+
           <div class="cards players-cards" id="9">
             <img src="https://placehold.it/50x70/111" alt="" id="9">
-
           </div>
 
         </div>
-
       </div>
 
       <div class="players">
         <h1 id="player-name">PLAYER</h1>
-        <img src="https://placehold.it/100x100/111" alt="" class="portraits">
+        <img src="./assets/Ginger.jpg" alt="" class="portraits">
       </div>
 
 
