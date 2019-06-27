@@ -60,7 +60,7 @@ var createBoard = function () {
   return newBoard;
 };
 
-//This function creates the players and the opponets
+//This function creates the players and the opponents
 var createPlayer = function (playerName) {
   new Player(playerName);
   Player.allPlayers[0].nextTurn = true;

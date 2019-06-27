@@ -9,7 +9,7 @@ Problem Domain and Solution:
 
 Coding style:
   a. Naming conventions: Camel casing for all variable and function names
-  b. Full descriptive names for vsriable and functions - no shorthands
+  b. Full descriptive names for variable and functions - no shorthands
 
 File Structure:
   a. pages directory

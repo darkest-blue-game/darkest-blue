@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-
+  <!-- todo: looks like a copy paste error happened here -->
   <meta name="viewport" content="width=
   , initial-scale=1.0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +33,9 @@
         <img src="./pages/assets/hearthstone.jpg" alt="Broken Link">
       </div>
       <form action="./pages/game.html" id="Player">
+        <!-- todo: forgot to add space between 'name' and 'id' properties -->
+        <!-- todo: prefer a 'label' element over the 'placeholder' property
+              https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Labels_and_placeholders -->
         <input type="text" name="playerName"id="name" placeholder="Enter player name here!"><br>
         <input type="submit" value="PLAY"   >
       </form>
@@ -42,5 +45,6 @@
   <script src="./js/view.js"></script>
   <footer></footer>
 </body>
+<!-- todo: looks like someone forgot to remove this closing tag -->
 </section>
 </html>
