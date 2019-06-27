@@ -1,6 +1,5 @@
 'use strict';
 var opponentDeck = [];
-
 var classMembers = ['Renee', 'Marisha', 'Promila', 'Manish', 'Chris', 'Sapana', 'Padma', 'Steven', 'Matt', 'Jack', 'Melfi', 'Nicholas', 'Kevin', 'Brandon', 'Fabian', 'Joashin', 'Peter', 'Trevor', 'Travis', 'Jackie', 'Jane', 'Roman', 'Nhu'];
 
 //Player constructor
@@ -65,7 +64,6 @@ var createPlayer = function (playerName) {
   new Player(playerName);
   Player.allPlayers[0].nextTurn = true;
   new Player('boss');
-  Player.allPlayers[1].remainingHealthPoints = 1;
 };
 
 function shuffleDeck(deck) {
@@ -176,4 +174,5 @@ function determineWinner() {
     }
   }
 
-}
+
+
