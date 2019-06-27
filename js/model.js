@@ -60,7 +60,7 @@ var createBoard = function () {
   return newBoard;
 };
 
-//This function creates the players and the opponets
+//This function creates the players and the opponents
 var createPlayer = function (playerName) {
   new Player(playerName);
   Player.allPlayers[0].nextTurn = true;
@@ -82,7 +82,7 @@ function shuffleDeck(deck) {
   return deck;
 }
 
-function drawCard(player) {
+function drawCard(player, handIndex) {
   console.log(player);
   for (var i = 0; i < 5; i++) {
     if (player.deck.cards.length === 0) {
@@ -90,7 +90,8 @@ function drawCard(player) {
       console.log('Deck empty');
     }
     if (player.hand.length < 5) {
-      player.hand.push(player.deck.cards.pop());
+      var card = player.deck.cards.pop();
+      player.hand.splice(handIndex, 0, card);
     } else {
       break;
     }
