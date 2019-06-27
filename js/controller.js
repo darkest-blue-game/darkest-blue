@@ -21,6 +21,9 @@ function handleSubmit(event) {
   console.log(playerName);
   storePlayerName(playerName);
   location.href = './pages/game.html';
+}
+
+var secondLoad = function(){
   var newBoard = createBoard();
   showPlayerName();
   createPlayer(playerName);
@@ -31,7 +34,8 @@ function handleSubmit(event) {
   assignHand();
   storeObjects();
   playersTurn();
-}
+};
+
 //This will allow players to select cards to attack with or defend
 function handleGamePlay(event) {
   event.preventDefault();
@@ -43,30 +47,31 @@ function handleGamePlay(event) {
     location.href ='./pages/results.html';
   }
   console.log(Player.allPlayers[0].hand);
-  assignHand();
+  assignHand(players[3]);
 }
-//Player.allPlayers[0].remainingHealthPoints !==0 && Player.allPlayers[1].remainingHealthPoints !== 0
+
 //This will select the card to play
 var selectPlayer = function(){
   if(Player.allPlayers[0].nextTurn === true){
     var cardPlayed = event.target;
     var id = cardPlayed.id;
-    cardPlayed = Player.allPlayers[0].hand.splice(id - 5,1)[0];
     console.log(cardPlayed);
-    return[Player.allPlayers[0], Player.allPlayers[1],cardPlayed];
+    console.log(id);
+    cardPlayed = Player.allPlayers[0].hand.splice(id -5,1)[0];
+    return[Player.allPlayers[0], Player.allPlayers[1],cardPlayed,id -5];
   }
   else {
     return [Player.allPlayers[1], Player.allPlayers[0]];
   }
-
 };
+
 //This will assign all the decks to the player and the boss
 var assignDeck = function (newDeck, bossDeck) {
   Player.allPlayers[0].deck = newDeck;
   Player.allPlayers[1].deck = bossDeck;
 };
-var assignHand = function () {
-  Player.allPlayers[0].hand = drawCard(Player.allPlayers[0]);
+var assignHand = function (handIndex) {
+  Player.allPlayers[0].hand = drawCard(Player.allPlayers[0],handIndex);
   Player.allPlayers[1].hand = drawCard(Player.allPlayers[1]);
   for(var i = 0 ; i < Player.allPlayers[0].hand.length; i++){
     var j = i + 5;
@@ -83,26 +88,31 @@ var assignHand = function () {
     divId.appendChild(p3);
   }
 };
+
 //This will contain all the game board setup functions
 var boardSetUp = function (newBoard) {
   newBoard.allPlayers.push(Player.allPlayers[0]);
   newBoard.allPlayers.push(Player.allPlayers[1]);
 };
+
 //This is to display the players name
 var showPlayerName = function(){
   playerName = localStorage.getItem('PlayerName');
   playerNameH1.textContent = playerName;
 };
+
 //This will store the players name
 var storePlayerName = function(PlayerName){
   localStorage.setItem('PlayerName',PlayerName);
 };
+
 //This will store the player objects to local storage
 var storeObjects = function () {
   localStorage.setItem('Player', JSON.stringify(Player.allPlayers[0]));
   localStorage.setItem('Opponent', JSON.stringify(Player.allPlayers[1]));
   localStorage.setItem('Game Board', JSON.stringify(newBoard));
 };
+
 //This will randomly choose player to start
 var playersTurn = function(){
   // var index = Math.floor(Math.random()* 2);
@@ -117,7 +127,7 @@ if(playerForm !== null){
 if(playerHand !== null){
   secondLoad();
   if(Player.allPlayers[0].nextTurn === true){
-    playerHand.addEventListener('click',handleGamePlay);
+    playerHand.addEventListener('click',handleGamePlay,true);
   }
   // else{
   //   var players = selectPlayer();
