@@ -1,6 +1,9 @@
 'use strict';
 var opponentDeck = [];
 
+//variable to keep track of plays to update the scrolling Marquee container
+var logArray = '';
+
 var classMembers = ['Renee', 'Marisha', 'Promila', 'Manish', 'Chris', 'Sapana', 'Padma', 'Steven', 'Matt', 'Jack', 'Melfi', 'Nicholas', 'Kevin', 'Brandon', 'Fabian', 'Joachen', 'Peter', 'Trevor', 'Travis', 'Jackie', 'Jane', 'Roman', 'Nhu'];
 
 //Player constructor
@@ -37,10 +40,12 @@ var Card = function (avatar, type, weight, imageSrc, wildCard) {
 
 Card.allCards = [];
 
+//Player and the opponent get their own deck of cards
 var Deck = function (cards = []) {
   this.cards = cards;
 };
 
+//Player and opponent have 5 cards in hand at a time
 var Hand = function (cards) {
   this.cards = cards;
   Hand.allCards.push(this);
@@ -50,7 +55,6 @@ Hand.allCards = [];
 //This will create deck
 var createDeck = function () {
   newDeck = new Deck(Card.allCards);
-  console.log(newDeck);
   return newDeck;
 };
 
@@ -60,16 +64,15 @@ var createBoard = function () {
   return newBoard;
 };
 
-//This function creates the players and the opponents
+//This function creates the player and the opponent (The Astrologer)
 var createPlayer = function (playerName) {
   new Player(playerName);
   Player.allPlayers[0].nextTurn = true;
-  new Player('boss');
-  Player.allPlayers[1].remainingHealthPoints = 2;
+  new Player('The Astrologer');
 };
 
+//Adaptation of Fisher-Yates shuffle alogorithm
 function shuffleDeck(deck) {
-
   var i = 0;
   var tempi, tempj = [];
   while (i < deck.cards.length) {
@@ -83,8 +86,8 @@ function shuffleDeck(deck) {
   return deck;
 }
 
+//Function to draw cards - 5 cards for initial hand and one card each turn after playing a card from hand
 function drawCard(player, handIndex) {
-  console.log(player);
   for (var i = 0; i < 5; i++) {
     if (player.deck.cards.length === 0) {
       player.deck = shuffleDeck(player.discardPile);
@@ -99,16 +102,17 @@ function drawCard(player, handIndex) {
   }
   return player.hand;
 }
-var logArray = '';
+
+//playCard decreases/increases health points of opponent and player accordingly
+//It moves the played card to discard pile, sets next turn, increments the number of cards played by current player
+//and updates the results on screen 
 
 function playCard(currentPlayer, otherPlayer, card) {
   var healthPoints = 0;
 
-  if (currentPlayer.name === 'boss') {
+  if (currentPlayer.name === 'The Astrologer') {
     var index = Math.floor(Math.random() * 5);
     card = currentPlayer.hand.splice(index, 1)[0];
-    // card = cardArr[0];
-    // currentPlayer.hand.allCards.splice(index, 1);
   }
 
   var playerHealth = document.getElementById('playerHealth');
@@ -121,19 +125,18 @@ function playCard(currentPlayer, otherPlayer, card) {
   if (card.cardType === 'heal') {
     healthPoints = currentPlayer.remainingHealthPoints + card.cardWeight;
     currentPlayer.remainingHealthPoints = healthPoints;
-    if (currentPlayer.name === 'boss') {
+    if (currentPlayer.name === 'The Astrologer') {
       updateHealth(opponentHealth, card.cardType, card.cardWeight);
     } else {
       updateHealth(playerHealth, card.cardType, card.cardWeight);
     }
-    console.log('Log Array: ' + logArray);
     logArray = logArray + currentPlayer.name + ' healed by gaining ' + JSON.stringify(card.cardWeight) + ' points. ' + breakTag;
   }
 
   if (card.cardType === 'attack') {
     healthPoints = otherPlayer.remainingHealthPoints - card.cardWeight;
     otherPlayer.remainingHealthPoints = healthPoints;
-    if (currentPlayer.name === 'boss') {
+    if (currentPlayer.name === 'The Astrologer') {
       updateHealth(playerHealth, card.cardType, card.cardWeight);
     } else {
       updateHealth(opponentHealth, card.cardType, card.cardWeight);
@@ -148,6 +151,8 @@ function playCard(currentPlayer, otherPlayer, card) {
   gameLog.innerHTML = logArray;
 }
 
+//Function to create 46 cards for the game
+
 function createCards() {
   for (var i = 0; i < classMembers.length; i++) {
     new Card(classMembers[i], 'heal', Math.floor(Math.random() * 7) + 1);
@@ -155,6 +160,8 @@ function createCards() {
   }
 }
 createCards();
+
+//Function to increment or subtract health in the progress bar
 
 function updateHealth(healthElement, cardType, cardWeight) {
 
