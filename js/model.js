@@ -1,6 +1,5 @@
 'use strict';
 var opponentDeck = [];
-
 var classMembers = ['Renee', 'Marisha', 'Promila', 'Manish', 'Chris', 'Sapana', 'Padma', 'Steven', 'Matt', 'Jack', 'Melfi', 'Nicholas', 'Kevin', 'Brandon', 'Fabian', 'Joashin', 'Peter', 'Trevor', 'Travis', 'Jackie', 'Jane', 'Roman', 'Nhu'];
 
 //Player constructor
@@ -65,7 +64,6 @@ var createPlayer = function (playerName) {
   new Player(playerName);
   Player.allPlayers[0].nextTurn = true;
   new Player('boss');
-  Player.allPlayers[1].remainingHealthPoints = 1;
 };
 
 function shuffleDeck(deck) {
@@ -155,64 +153,8 @@ function updateHealth(healthElement, cardType, cardWeight) {
   if (cardType === 'negative') {
     healthElement.value -= cardWeight;
   }
-
-  /*var width = 1;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width++;
-      healthElement.style.height = width + '%';
-    }
-  }*/
 }
 
-function handleSubmitEvent(event) {
-  console.log('in window close');
-  localStorage.clear();
-  location.href = './index.html';
-}
 
-//var playerHealth = document.getElementById('opponentHealth');
-//updateHealth(playerHealth, 'negative', 3);
 
-//var newPlayer = new Player('Padma');
-//var Boss = new Player('boss');
-//playCard(Boss, newPlayer, Card.allCards[0]);
 
-//localStorage.setItem('Player', JSON.stringify(Player.allPlayers[0]));
-//localStorage.setItem('Opponent', JSON.stringify(Player.allPlayers[1]));
-//localStorage.setItem('Game Board', JSON.stringify(newBoard));
-/*
-var playerFromStorage = localStorage.getItem('Opponent');
-var unstringifyPlayerName = JSON.parse(playerFromStorage);
-
-console.log('playerFromStorage ' + unstringifyPlayerName.name);
-var el = document.getElementById('winner');
-el.textContent = unstringifyPlayerName.name;
-*/
-var form = document.getElementById('results-form');
-form.addEventListener('submit', handleSubmitEvent);
-
-function determineWinner() {
-  var winnerElement = document.getElementById('winner');
-  var winnerHealthElement = document.getElementById('winner-remaining-health');
-
-  var playerFromStorage = localStorage.getItem('Player');
-  var unstringifyPlayer = JSON.parse(playerFromStorage);
-
-  var opponentFromStorage = localStorage.getItem('Opponent');
-  var unstringifyOpponent = JSON.parse(opponentFromStorage);
-
-  if ((unstringifyPlayer.remainingHealthPoints === 0) && (unstringifyOpponent.remainingHealthPoints !== 0)) {
-    winnerElement.textContent = unstringifyOpponent.name;
-    winnerHealthElement.textContent = unstringifyOpponent.remainingHealthPoints;
-  } else {
-    if ((unstringifyPlayer.remainingHealthPoints !== 0) && (unstringifyOpponent.remainingHealthPoints === 0)) {
-      winnerElement.textContent = unstringifyPlayer.name;
-      winnerHealthElement.textContent = unstringifyPlayer.remainingHealthPoints;
-    }
-  }
-
-}

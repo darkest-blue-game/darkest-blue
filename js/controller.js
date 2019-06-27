@@ -77,15 +77,30 @@ var assignHand = function (handIndex) {
     var j = i + 5;
     var k = JSON.stringify(j);
     var divId = document.getElementById(k);
-    var p1 = document.createElement('p');
-    var p2 = document.createElement('p');
-    var p3 = document.createElement('p');
+
+    if(handIndex === undefined){
+      var p1 = document.createElement('p');
+      var p2 = document.createElement('p');
+      var p3 = document.createElement('p');
+      p1.setAttribute('id', 'p1'+ k);
+      p2.setAttribute('id', 'p2'+ k);
+      p3.setAttribute('id', 'p3'+ k);
+      divId.appendChild(p1);
+      divId.appendChild(p2);
+      divId.appendChild(p3);
+    }
+    else{
+      p1 = document.getElementById('p1'+k);
+      p2 = document.getElementById('p2'+k);
+      p3 = document.getElementById('p3'+k);
+      p1.textContent='';
+      p2.textContent='';
+      p3.textContent='';
+    }
     p1.textContent = Player.allPlayers[0].hand[i].cardWeight;
     p2.textContent = Player.allPlayers[0].hand[i].avatarName;
     p3.textContent = Player.allPlayers[0].hand[i].cardType;
-    divId.appendChild(p1);
-    divId.appendChild(p2);
-    divId.appendChild(p3);
+
   }
 };
 
