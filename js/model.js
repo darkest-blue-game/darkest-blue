@@ -13,11 +13,7 @@ var Player = function (name) {
   this.card = Card;
   this.deck = Deck;
   this.discardPile = new Deck;
-<<<<<<< Updated upstream
-  this.hand = [];
-=======
   this.hand = Hand;
->>>>>>> Stashed changes
   //array of players
   Player.allPlayers.push(this);
 };
@@ -103,13 +99,6 @@ function playCard(currentPlayer, otherPlayer, card) {
   var healthPoints = 0;
   if (currentPlayer.name === 'boss') {
     var index = Math.floor(Math.random() * 5);
-<<<<<<< Updated upstream
-    card = currentPlayer.hand.splice(index,1)[0];
-    // card = cardArr[0];
-    // currentPlayer.hand.allCards.splice(index, 1);
-  }
-  console.log(card);
-=======
     card = currentPlayer.hand.splice(index, 1)[0];
     //card = cardArr[0];
   }
@@ -117,7 +106,6 @@ function playCard(currentPlayer, otherPlayer, card) {
   var playerHealth = document.getElementById('playerHealth');
   var opponentHealth = document.getElementById('opponentHealth');
 
->>>>>>> Stashed changes
   //var newCard = card;
   if (card.cardType === 'positive') {
     console.log(card.cardType);
