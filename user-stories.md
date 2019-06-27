@@ -2,9 +2,9 @@ MVP
 
 1. As a developer, I want a player and the entity he will play against displayed when the game starts.
 2. As a developer I want to come up with a good name for the game
-3. As a developer, I would like to have a stack of 50 cards available for players to draw from when the game starts.
-4. As  a developer I want to correctly use localStorage to store player name, number of turns, number of cards played by player, number of cards played by the opponent, player’s OR boss’ remaining health at the conclusion of game and who won the game.
-5. As a developer, I would like the used cards to be recycled, reshuffled and presented again if all 50 cards are drawn and used and there is no winner yet.
+3. As a developer, I would like to have a stack of 46 cards available for players to draw from when the game starts.
+4. As  a developer I want to correctly use localStorage to store player name, number of turns, number of cards played by player, number of cards played by the opponent, player’s OR opponent's remaining health at the conclusion of game and who won the game.
+5. As a developer, I would like the used cards to be recycled, reshuffled and presented again if all 46 cards are drawn and used and there is no winner yet.
 7. As a developer, I want to set the goal of the game to defeat your opponent by depleting their health pool.
 8. As a developer I want game mechanics to be bug free, so that positive and negative cards properly add health and subtract health.
 9. As a developer I want to create 3 screens to show the game to the player, intro, game, results.
