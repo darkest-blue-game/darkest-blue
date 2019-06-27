@@ -111,7 +111,7 @@ function playCard(currentPlayer, otherPlayer, card) {
   var playerHealth = document.getElementById('playerHealth');
   var opponentHealth = document.getElementById('opponentHealth');
 
-  if (card.cardType === 'positive') {
+  if (card.cardType === 'heal') {
     healthPoints = currentPlayer.remainingHealthPoints + card.cardWeight;
     currentPlayer.remainingHealthPoints = healthPoints;
     if (currentPlayer.name === 'boss') {
@@ -121,7 +121,7 @@ function playCard(currentPlayer, otherPlayer, card) {
     }
   }
 
-  if (card.cardType === 'negative') {
+  if (card.cardType === 'attack') {
     healthPoints = otherPlayer.remainingHealthPoints - card.cardWeight;
     otherPlayer.remainingHealthPoints = healthPoints;
     if (currentPlayer.name === 'boss') {
@@ -132,29 +132,47 @@ function playCard(currentPlayer, otherPlayer, card) {
   }
   currentPlayer.nextTurn = false;
   otherPlayer.nextTurn = true;
-  console.log(otherPlayer.remainingHealthPoints);
-  console.log(currentPlayer.remainingHealthPoints);
   currentPlayer.discardPile.cards.push(card);
+  currentPlayer.numberOfCardsPlayed++;
 }
 
 function createCards() {
   for (var i = 0; i < classMembers.length; i++) {
-    new Card(classMembers[i], 'positive', Math.floor(Math.random() * 7) + 1);
-    new Card(classMembers[i], 'negative', Math.floor(Math.random() * 7) + 1);
+    new Card(classMembers[i], 'heal', Math.floor(Math.random() * 7) + 1);
+    new Card(classMembers[i], 'attack', Math.floor(Math.random() * 7) + 1);
   }
 }
 createCards();
 
 function updateHealth(healthElement, cardType, cardWeight) {
 
-  if (cardType === 'positive') {
+  if (cardType === 'heal') {
     healthElement.value += cardWeight;
   }
-  if (cardType === 'negative') {
+  if (cardType === 'attack') {
     healthElement.value -= cardWeight;
   }
 }
 
+function determineWinner() {
+  var winnerElement = document.getElementById('winner');
+  var winnerHealthElement = document.getElementById('winner-remaining-health');
+
+  var playerFromStorage = localStorage.getItem('Player');
+  var unstringifyPlayer = JSON.parse(playerFromStorage);
+
+  var opponentFromStorage = localStorage.getItem('Opponent');
+  var unstringifyOpponent = JSON.parse(opponentFromStorage);
+
+  if ((unstringifyPlayer.remainingHealthPoints === 0) && (unstringifyOpponent.remainingHealthPoints !== 0)) {
+    winnerElement.textContent = 'Winner: ' + unstringifyOpponent.name;
+    winnerHealthElement.textContent = 'Remaining Health: ' + unstringifyOpponent.remainingHealthPoints;
+  } else {
+    if ((unstringifyPlayer.remainingHealthPoints !== 0) && (unstringifyOpponent.remainingHealthPoints === 0)) {
+      winnerElement.textContent = 'Winner: ' + unstringifyPlayer.name;
+      winnerHealthElement.textContent = 'Remaining Health: ' + unstringifyPlayer.remainingHealthPoints;
+    }
+  }
 
 
 

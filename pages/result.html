@@ -24,16 +24,16 @@
   <main>
     <h1>DARKEST BLUE</h1>
     <h1>GAME RESULTS</h1>
-    <!--<h2>`Winner: ${winner}`</h2>-->
-    <h2>`Winner: <span id="winner"></span> </h2>
-    <h2>`Remaining health: <span id="winner-remaining-health"></span></h2>
-    <h2>`Remaining health: ${remainigHealth}`</h2>
+    <h2 id="winner">`Winner: ${winner}`</h2>
+    <h2 id="remaining-health">`Remaining health: ${remainigHealth}`</h2>
     <h2>`Total Number of Cards Played: ${cardsPlayed}`</h2>
     <h2>`Number of Cards Played by Player: ${numberCardsPlayedByPlayer}`</h2>
     <h2>`Number of Cards Played by Opponent: ${numberCardsPlayedByOpponent}`</h2>
     <h2>`Number of Turns in Game: ${totalNumberOfTurnsInGame}`</h2>
-    <button>PLAY AGAIN</button>
-    <button>EXIT</button>
+    <form>
+      <input type="button" onclick="location.href = '../index.html';" value="EXIT" />
+      <input type="button" onclick="location.href = './game.html';" value="PLAY AGAIN" />
+    </form>
   </main>
 
   <script src="../js/model.js"></script>
