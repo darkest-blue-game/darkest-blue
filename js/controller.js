@@ -8,6 +8,11 @@
 var playerForm = document.getElementById('Player');
 var playerNameH1 = document.getElementById('player-name');
 var playerHand = document.getElementById('PlayerHand');
+var div5 = document.getElementById('5');
+var div6 = document.getElementById('6');
+var div7 = document.getElementById('7');
+var div8 = document.getElementById('8');
+var div9 = document.getElementById('9');
 var newBoard;
 var playerName;
 var newDeck;
@@ -21,6 +26,8 @@ function handleSubmit(event) {
   console.log(playerName);
   storePlayerName(playerName);
   location.href = './pages/game.html';
+}
+var secondLoad = function(){
   var newBoard = createBoard();
   showPlayerName();
   createPlayer(playerName);
@@ -31,7 +38,7 @@ function handleSubmit(event) {
   assignHand();
   storeObjects();
   playersTurn();
-}
+};
 //This will allow players to select cards to attack with or defend
 function handleGamePlay(event) {
   event.preventDefault();
@@ -51,14 +58,14 @@ var selectPlayer = function(){
   if(Player.allPlayers[0].nextTurn === true){
     var cardPlayed = event.target;
     var id = cardPlayed.id;
-    cardPlayed = Player.allPlayers[0].hand.splice(id - 5,1)[0];
+    console.log(cardPlayed);
+    cardPlayed = Player.allPlayers[0].hand.splice(id,1)[0];
     console.log(cardPlayed);
     return[Player.allPlayers[0], Player.allPlayers[1],cardPlayed];
   }
   else {
     return [Player.allPlayers[1], Player.allPlayers[0]];
   }
-
 };
 //This will assign all the decks to the player and the boss
 var assignDeck = function (newDeck, bossDeck) {
