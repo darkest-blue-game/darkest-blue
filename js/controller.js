@@ -40,28 +40,29 @@ var secondLoad = function(){
 function handleGamePlay(event){
   console.log('handling game');
   event.preventDefault();
-
   var players = selectPlayer();
   console.log(players);
-  playCard(players[0],players[1], players[2][0]);
+  playCard(players[0],players[1], players[2]);
   playCard(Player.allPlayers[1],Player.allPlayers[0]);
   if(Player.allPlayers[0].remainingHealthPoints === 0 || Player.allPlayers[1].remainingHealthPoints === 0){
     location.href ='./pages/results.html';
   }
-
+  console.log(Player.allPlayers[0].hand);
+  assignHand();
 }
 //This will select the card to play
 var selectPlayer = function(){
   if(Player.allPlayers[0].nextTurn === true){
     var cardPlayed = event.target;
     var id = cardPlayed.id;
-    cardPlayed = Player.allPlayers[0].hand.splice(id - 5,1);
+    cardPlayed = Player.allPlayers[0].hand.splice(id - 5,1)[0];
     console.log(cardPlayed);
     return[Player.allPlayers[0], Player.allPlayers[1],cardPlayed];
   }
   else{
     return[Player.allPlayers[1],Player.allPlayers[0]];
   }
+
 };
 //This will assign all the decks to the player and the bossd
 var assignDeck = function(newDeck,bossDeck){

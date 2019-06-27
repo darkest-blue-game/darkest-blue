@@ -13,7 +13,7 @@ var Player = function (name) {
   this.card = Card;
   this.deck = Deck;
   this.discardPile = new Deck;
-  this.hand = Hand;
+  this.hand = [];
   //array of players
   Player.allPlayers.push(this);
 };
@@ -79,26 +79,28 @@ function shuffleDeck(deck) {
 }
 
 function drawCard(player) {
+  console.log(player);
   for (var i = 0; i < 5; i++) {
     if (player.deck.cards.length === 0) {
       player.deck = shuffleDeck(player.discardPile);
       console.log('Deck empty');
     }
-    if (player.hand.allCards.length < 5) {
-      player.hand.allCards.push(player.deck.cards.pop());
+    debugger
+    if (player.hand.length < 5) {
+      player.hand.push(player.deck.cards.pop());
     } else {
       break;
     }
   }
-  return player.hand.allCards;
+  return player.hand;
 }
 
 function playCard(currentPlayer, otherPlayer, card) {
   var healthPoints = 0;
   if (currentPlayer.name === 'boss') {
     var index = Math.floor(Math.random() * 5);
-    var cardArr = currentPlayer.hand.splice(index,1);
-    card = cardArr[0];
+    card = currentPlayer.hand.splice(index,1)[0];
+    // card = cardArr[0];
     // currentPlayer.hand.allCards.splice(index, 1);
   }
   console.log(card);
@@ -118,6 +120,7 @@ function playCard(currentPlayer, otherPlayer, card) {
   console.log(otherPlayer.remainingHealthPoints);
   console.log(currentPlayer.remainingHealthPoints);
   currentPlayer.discardPile.cards.push(card);
+  // currentPlayer.hand = drawCard(currentPlayer);
 }
 
 function createCards() {
