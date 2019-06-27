@@ -105,7 +105,8 @@ function playCard(currentPlayer, otherPlayer, card) {
   if (currentPlayer.name === 'boss') {
     var index = Math.floor(Math.random() * 5);
     card = currentPlayer.hand.splice(index, 1)[0];
-    //card = cardArr[0];
+    // card = cardArr[0];
+    // currentPlayer.hand.allCards.splice(index, 1);
   }
 
   var playerHealth = document.getElementById('playerHealth');
@@ -124,7 +125,7 @@ function playCard(currentPlayer, otherPlayer, card) {
   if (card.cardType === 'negative') {
     healthPoints = otherPlayer.remainingHealthPoints - card.cardWeight;
     otherPlayer.remainingHealthPoints = healthPoints;
-    if (currentPlayer.name === 'Boss') {
+    if (currentPlayer.name === 'boss') {
       updateHealth(playerHealth, card.cardType, card.cardWeight);
     } else {
       updateHealth(opponentHealth, card.cardType, card.cardWeight);
@@ -165,8 +166,5 @@ function updateHealth(healthElement, cardType, cardWeight) {
     }
   }*/
 }
-
-
-
 
 
