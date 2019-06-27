@@ -116,6 +116,7 @@ button {
   font-size: 25px;
 }
 
+<<<<<<< Updated upstream
 input {
   background-color: grey;
   color: #00d4ff;
@@ -133,6 +134,11 @@ input {
   border: 2px solid grey;
 } */
 
+=======
+progress {
+  height: 20 px;
+}
+>>>>>>> Stashed changes
 /* #game-title {
   font-size: 40px;
   font-style: bold;
