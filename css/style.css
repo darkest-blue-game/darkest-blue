@@ -5,12 +5,19 @@
 body {
   height: 1000px;
   width: 960px;
-  background-color: olive;
+  background-color: firebrick; 
+  background-image: url("../pages/assets/energy-flow.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #00d4ff;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .triptych-containers {
   float: left;
-  border: red 5px solid;
+  height: 965px;
+  margin-top: 35px;
+  border: yellow 5px solid;
 }
 
 #game-screen-left{
@@ -28,7 +35,7 @@ body {
 #game-board {
   height: 460px;
   width: 500px;
-  background-image: url("../pages/assets/old-vintage-map-background.jpg");
+  background-image: url("../pages/assets/metal-game-board.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   margin: auto;
@@ -48,12 +55,17 @@ body {
 }
 
 .hands > div {
-  background-color: blue;
+  background-color: blue; 
+}
+
+.hands > div > div {
+  display: inline-block;
+  background-color: yellow;
 }
 
 .hands {
   text-align: center;
-  background-color: silver;
+  background-color: white;
 }
 
 #opponent-deck {
@@ -65,21 +77,61 @@ body {
 }
 
 .players > * {
-  display: inline-block;
-  
+  display: inline-block; 
 }
 
 .players {
+  position: relative;
   text-align: center;
-  height: 10%;
-  width: 18%;
+  width: 100px;
   background-color: darkmagenta;
   margin: auto;
 }
 
-#opponent-name {
-  float: left;
+.cards {
+  width: 70px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
 }
+
+.cards img {
+  width: 100%;
+}
+
+#opponent-name {
+  position: absolute;
+  top: 40px;
+  left: -90px;
+}
+
+#marquee-container {
+  border: 5px solid grey;
+}
+
+button {
+  background-color: grey;
+  color: #00d4ff;
+  border: 2px solid #00d4ff; 
+  border-radius: 25px;
+  font-size: 25px;
+}
+
+input {
+  background-color: grey;
+  color: #00d4ff;
+  border: 2px solid #00d4ff; 
+  border-radius: 25px;
+  font-size: 25px;
+}
+
+/* Figure these out later  */
+
+/* 
+.button:hover {
+  background-color: #00d4ff; 
+  color: grey;
+  border: 2px solid grey;
+} */
 
 /* #game-title {
   font-size: 40px;
@@ -89,8 +141,3 @@ body {
   text-align: center;
 } */
 
-/* #canvasField {
-  height: 800px;
-  width: 800px;
-  background-color: blue;
-} */
