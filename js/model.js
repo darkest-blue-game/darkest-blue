@@ -12,8 +12,8 @@ var Player = function (name) {
   this.nextTurn = false;
   this.card = Card;
   this.deck = Deck;
-  this.discardPile = Deck;
-  this.hand = Hand;
+  this.discardPile = new Deck;
+  this.hand = [];
   //array of players
   Player.allPlayers.push(this);
 };
@@ -34,7 +34,7 @@ var Card = function (avatar, type, weight, imageSrc, wildCard) {
 };
 Card.allCards = [];
 
-var Deck = function (cards) {
+var Deck = function (cards = []) {
   this.cards = cards;
 };
 
@@ -59,6 +59,7 @@ var createBoard = function () {
 //This function creates the players and the opponets
 var createPlayer = function (playerName) {
   new Player(playerName);
+  Player.allPlayers[0].nextTurn = true;
   new Player('boss');
 };
 
@@ -78,43 +79,48 @@ function shuffleDeck(deck) {
 }
 
 function drawCard(player) {
+  console.log(player);
   for (var i = 0; i < 5; i++) {
     if (player.deck.cards.length === 0) {
       player.deck = shuffleDeck(player.discardPile);
       console.log('Deck empty');
     }
-    if (player.hand.allCards.length < 5) {
-      player.hand.allCards.push(player.deck.cards.pop());
+    debugger
+    if (player.hand.length < 5) {
+      player.hand.push(player.deck.cards.pop());
     } else {
       break;
     }
   }
-  return player.hand.allCards;
+  return player.hand;
 }
 
 function playCard(currentPlayer, otherPlayer, card) {
   var healthPoints = 0;
-
-  if (currentPlayer.name === 'Boss') {
+  if (currentPlayer.name === 'boss') {
     var index = Math.floor(Math.random() * 5);
-    card = currentPlayer.hand.allCards[index];
-    currentPlayer.hand.allCards.splice(index, 1);
+    card = currentPlayer.hand.splice(index,1)[0];
+    // card = cardArr[0];
+    // currentPlayer.hand.allCards.splice(index, 1);
   }
+  console.log(card);
   //var newCard = card;
   if (card.cardType === 'positive') {
+    console.log(card.cardType);
     healthPoints = currentPlayer.remainingHealthPoints + card.cardWeight;
     currentPlayer.remainingHealthPoints = healthPoints;
   }
-
   if (card.cardType === 'negative') {
+    console.log(card.cardType);
     healthPoints = otherPlayer.remainingHealthPoints - card.cardWeight;
     otherPlayer.remainingHealthPoints = healthPoints;
   }
   currentPlayer.nextTurn = false;
   otherPlayer.nextTurn = true;
-
+  console.log(otherPlayer.remainingHealthPoints);
+  console.log(currentPlayer.remainingHealthPoints);
   currentPlayer.discardPile.cards.push(card);
-
+  // currentPlayer.hand = drawCard(currentPlayer);
 }
 
 function createCards() {
