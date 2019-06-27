@@ -113,7 +113,7 @@ function playCard(currentPlayer, otherPlayer, card) {
   var playerHealth = document.getElementById('playerHealth');
   var opponentHealth = document.getElementById('opponentHealth');
 
-  if (card.cardType === 'positive') {
+  if (card.cardType === 'heal') {
     healthPoints = currentPlayer.remainingHealthPoints + card.cardWeight;
     currentPlayer.remainingHealthPoints = healthPoints;
     if (currentPlayer.name === 'boss') {
@@ -123,7 +123,7 @@ function playCard(currentPlayer, otherPlayer, card) {
     }
   }
 
-  if (card.cardType === 'negative') {
+  if (card.cardType === 'attack') {
     healthPoints = otherPlayer.remainingHealthPoints - card.cardWeight;
     otherPlayer.remainingHealthPoints = healthPoints;
     if (currentPlayer.name === 'boss') {
@@ -134,66 +134,27 @@ function playCard(currentPlayer, otherPlayer, card) {
   }
   currentPlayer.nextTurn = false;
   otherPlayer.nextTurn = true;
-  console.log(otherPlayer.remainingHealthPoints);
-  console.log(currentPlayer.remainingHealthPoints);
   currentPlayer.discardPile.cards.push(card);
+  currentPlayer.numberOfCardsPlayed++;
 }
 
 function createCards() {
   for (var i = 0; i < classMembers.length; i++) {
-    new Card(classMembers[i], 'positive', Math.floor(Math.random() * 7) + 1);
-    new Card(classMembers[i], 'negative', Math.floor(Math.random() * 7) + 1);
+    new Card(classMembers[i], 'heal', Math.floor(Math.random() * 7) + 1);
+    new Card(classMembers[i], 'attack', Math.floor(Math.random() * 7) + 1);
   }
 }
 createCards();
 
 function updateHealth(healthElement, cardType, cardWeight) {
 
-  if (cardType === 'positive') {
+  if (cardType === 'heal') {
     healthElement.value += cardWeight;
   }
-  if (cardType === 'negative') {
+  if (cardType === 'attack') {
     healthElement.value -= cardWeight;
   }
-
-  /*var width = 1;
-  var id = setInterval(frame, 10);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width++;
-      healthElement.style.height = width + '%';
-    }
-  }*/
 }
-
-function handleSubmitEvent(event) {
-  console.log('in window close');
-  localStorage.clear();
-  location.href = './index.html';
-}
-
-//var playerHealth = document.getElementById('opponentHealth');
-//updateHealth(playerHealth, 'negative', 3);
-
-//var newPlayer = new Player('Padma');
-//var Boss = new Player('boss');
-//playCard(Boss, newPlayer, Card.allCards[0]);
-
-//localStorage.setItem('Player', JSON.stringify(Player.allPlayers[0]));
-//localStorage.setItem('Opponent', JSON.stringify(Player.allPlayers[1]));
-//localStorage.setItem('Game Board', JSON.stringify(newBoard));
-/*
-var playerFromStorage = localStorage.getItem('Opponent');
-var unstringifyPlayerName = JSON.parse(playerFromStorage);
-
-console.log('playerFromStorage ' + unstringifyPlayerName.name);
-var el = document.getElementById('winner');
-el.textContent = unstringifyPlayerName.name;
-*/
-var form = document.getElementById('results-form');
-form.addEventListener('submit', handleSubmitEvent);
 
 function determineWinner() {
   var winnerElement = document.getElementById('winner');
@@ -206,12 +167,12 @@ function determineWinner() {
   var unstringifyOpponent = JSON.parse(opponentFromStorage);
 
   if ((unstringifyPlayer.remainingHealthPoints === 0) && (unstringifyOpponent.remainingHealthPoints !== 0)) {
-    winnerElement.textContent = unstringifyOpponent.name;
-    winnerHealthElement.textContent = unstringifyOpponent.remainingHealthPoints;
+    winnerElement.textContent = 'Winner: ' + unstringifyOpponent.name;
+    winnerHealthElement.textContent = 'Remaining Health: ' + unstringifyOpponent.remainingHealthPoints;
   } else {
     if ((unstringifyPlayer.remainingHealthPoints !== 0) && (unstringifyOpponent.remainingHealthPoints === 0)) {
-      winnerElement.textContent = unstringifyPlayer.name;
-      winnerHealthElement.textContent = unstringifyPlayer.remainingHealthPoints;
+      winnerElement.textContent = 'Winner: ' + unstringifyPlayer.name;
+      winnerHealthElement.textContent = 'Remaining Health: ' + unstringifyPlayer.remainingHealthPoints;
     }
   }
 
