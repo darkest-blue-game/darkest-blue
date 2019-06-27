@@ -46,6 +46,8 @@ body {
 }
 
 .portraits {
+  height: 100px;
+  width: 100px;
   border-radius: 25px;
 }
 
@@ -98,7 +100,21 @@ body {
   width: 100%;
 }
 
+.players-cards {
+  transition: all .5s;
+}
+
+.players-cards:hover {
+  transform: scale(2.5); 
+}
+
 #opponent-name {
+  position: absolute;
+  top: 40px;
+  left: -90px;
+}
+
+#player-name {
   position: absolute;
   top: 40px;
   left: -90px;
@@ -124,6 +140,11 @@ input {
   font-size: 25px;
 }
 
+
+progress {
+  height: 20 px;
+}
+
 /* Figure these out later  */
 
 /* 
@@ -133,9 +154,6 @@ input {
   border: 2px solid grey;
 } */
 
-progress {
-  height: 20 px;
-}
 /* #game-title {
   font-size: 40px;
   font-style: bold;
