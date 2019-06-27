@@ -134,6 +134,8 @@ function playCard(currentPlayer, otherPlayer, card) {
   otherPlayer.nextTurn = true;
   currentPlayer.discardPile.cards.push(card);
   currentPlayer.numberOfCardsPlayed++;
+  console.log(currentPlayer.remainingHealthPoints);
+  console.log(otherPlayer.remainingHealthPoints);
 }
 
 function createCards() {
@@ -173,6 +175,5 @@ function determineWinner() {
       winnerHealthElement.textContent = 'Remaining Health: ' + unstringifyPlayer.remainingHealthPoints;
     }
   }
-
-
+}
 
