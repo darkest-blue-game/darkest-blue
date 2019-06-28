@@ -12,26 +12,50 @@
 </head>
 
 <body>
-  <header>
 
-    <nav>
-      <a href="../index.html">INTRO</a>
-      <a href="./game.html">GAME</a>
-      <a href="./result.html">RESULTS</a>
-      <button>MENU</button>
-    </nav>
-  </header>
+  <!-- Menu toggle button -->
+  <div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+
+  <!-- Off-canvas navigation menu. Works cited at bottom. -->
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li><a href="#">GAME RULES</a></li>
+      <li><a href="../index.html">INTRO</a></li>
+      <li><a href="./game.html">GAME</a></li>
+      <li><a href="./result.html">RESULTS</a></a></li>
+      <li><a href="#">ABOUT THE DEVELOPERS</a></li>
+    </ul>
+  </div>
+
   <main>
-    <h1>DARKEST BLUE</h1>
-    <h1>GAME RESULTS</h1>
-    <h2 id="winner">Winner: </h2>
-    <h2 id="winner-remaining-health">Remaining Health: </h2>
-    <h2 id="player-cards">Number of cards played by player: </h2>
-    <h2 id="opponent-cards"> Number of cards played by opponent: </h2>
-    <form>
-      <input type="button" onclick="location.href = '../index.html';" value="EXIT" />
-      <input type="button" onclick="location.href = './game.html';" value="PLAY AGAIN" />
-    </form>
+
+    <div id="title-banner-container">
+      <div id="game-title">DARKEST BLUE</div>
+      <div>
+        <img src="./assets/energy-flow.jpg" alt="Broken Link" id="results-screen-banner">
+      </div>
+    </div>
+
+    <div id="game-results-container">
+      <div id="game-results-text">
+          <p id="game-results-header">GAME RESULTS</p>
+          <p id="winner">Winner: </h2>
+          <p id="winner-remaining-health">Remaining Health: </p>
+          <p id="player-cards">Number of cards played by player: </p>
+          <p id="opponent-cards"> Number of cards played by opponent: </p>
+      </div>
+      <form>
+        <input type="button" onclick="location.href = './game.html';" value="PLAY AGAIN" />
+        <input type="button" onclick="location.href = '../index.html';" value="EXIT" />
+      </form>
+    </div>
+
   </main>
 
   <script src="../js/model.js"></script>

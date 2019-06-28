@@ -15,6 +15,7 @@ body {
 
 #title-banner-container {
   position: relative;
+  z-index: -1;
 }
 
 #game-title {
@@ -37,6 +38,44 @@ body {
   border: 5px ridge darkslategrey;
   border-radius: 15px;
   margin: 20px auto;
+  z-index: -1;
+}
+
+#results-screen-banner {
+  display: block;
+  height: 500px;
+  width: 350px;
+  border: 5px ridge darkslategrey;
+  border-radius: 15px;
+  margin: 20px auto;
+  z-index: -1;
+}
+
+#game-results-container {
+  position: absolute;
+  top: 260px;
+  left: 310px;
+  padding: 10px;
+  margin: 10px auto 10px;
+  text-align: center;
+}
+
+#game-results-text {
+  background-color: deepskyblue;
+  padding: 10px;
+  margin: 10px auto 10px;
+  display: inline-block;
+  border: 5px ridge darkslategrey;
+  border-radius: 15px;
+}
+
+#game-results-text p {
+  padding: .25em;
+}
+
+#game-results-header {
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 #Player {
@@ -48,7 +87,6 @@ body {
   float: left;
   height: 1200px;
   margin-top: 35px;
-  /* border: firebrick 5px solid; */
 }
 
 #game-screen-left{
@@ -170,9 +208,9 @@ body {
   position: absolute;
   top: 40px;
   left: -150px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 5px hidden;
+  background: grey;
   border-radius: 15px;
+  padding: 5px;
 }
 
 #player-name {
@@ -199,12 +237,20 @@ body {
   position: relative;
   top: 380px;
   padding: 10px;
+  z-index: -1;
+}
+
+#scrollbox-container > p {
+  text-decoration: underline;
+  margin: 5px;
+  z-index: -1;
 }
 
 #game-log {
    height:200px;
    width:100%;
    overflow: auto;
+  z-index: -1;
 }
 
 button {
@@ -245,6 +291,7 @@ input {
   position: relative;
   top: 510px;
   left: 50px;
+  z-index: -1;
 }
 
 #player-health-title {
@@ -253,8 +300,8 @@ input {
   left: 75px;
   font-size: 25px;
   text-decoration: underline;
+  z-index: -1;
 }
-
 
 /* Progress bar styling. */
 
@@ -290,8 +337,6 @@ progress[value]::-webkit-progress-value {
 
 }
 
-
-
 /* Scrollbar styling */
 
 ::-webkit-scrollbar {
@@ -312,6 +357,112 @@ progress[value]::-webkit-progress-value {
   background: #383428; 
 }
 
+/* Styling for the menu navigation */
 
+#sidebarMenu {
+  height: 100%;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  margin-top: 30px;
+  transform: translateX(-250px);
+  transition: transform 250ms ease-in-out;
+  background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
+}
 
+.sidebarMenuInner {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
 
+.sidebarMenuInner li {
+  list-style: none;
+  color: #00d4ff;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sidebarMenuInner li span {
+  display: block;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.50);
+}
+
+.sidebarMenuInner li a {
+  color: #00d4ff;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Styling for the hamburger button */
+
+input[type="checkbox"]:checked ~ #sidebarMenu { transform: translateX(0); }
+
+input[type=checkbox] {
+  transition: all 0.3s;
+  display: none;
+}
+
+.sidebarIconToggle {
+  transition: all 0.3s;
+  cursor: pointer;
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  top: 22px;
+  left: 15px;
+  height: 22px;
+  width: 22px;
+}
+
+.spinner {
+  transition: all 0.3s;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: #00d4ff;
+}
+
+.horizontal {
+  transition: all 0.3s;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+
+.diagonal.part-1 {
+  position: relative;
+  transition: all 0.3s;
+  float: left;
+}
+
+.diagonal.part-2 {
+  transition: all 0.3s;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+  transition: all 0.3s;
+  opacity: 0;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+  transition: all 0.3s;
+  transform: rotate(135deg);
+  margin-top: 8px;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+  transition: all 0.3s;
+  transform: rotate(-135deg);
+  margin-top: -9px;
+}

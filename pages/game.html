@@ -17,22 +17,35 @@
 
     <!-- Container for the left of the screen. -->
     <div class="triptych-containers" id="game-screen-left">
-      <header>
-        <nav>
-          <a href="../index.html">INTRO</a>
-          <a href="./game.html">GAME</a>
-          <a href="./result.html">RESULTS</a>
-          <button>MENU</button>
-        </nav>
-      </header>
+
+      <!-- Menu toggle button -->
+      <div class="header"></div>
+      <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+      <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner diagonal part-1"></div>
+        <div class="spinner horizontal"></div>
+        <div class="spinner diagonal part-2"></div>
+      </label>
+
+      <!-- Off-canvas navigation menu. Works cited at bottom. -->
+      <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+          <li><a href="#" >GAME RULES</a></li>
+          <li><a href="../index.html">INTRO</a></li>
+          <li><a href="./game.html">GAME</a></li>
+          <li><a href="./result.html">RESULTS</a></a></li>
+          <li><a href="#" >ABOUT THE DEVELOPERS</a></li>
+        </ul>
+      </div>
 
       <div id="scrollbox-container">
+        <p>GAME LOG: </p>
         <div id="game-log">
         </div>
       </div>
 
       <div class="health-bars">
-          <p id="player-health-title">PLAYER HEALTH</p>
+        <p id="player-health-title">PLAYER HEALTH</p>
         <progress id="playerHealth" value="15" max="15"></progress>
       </div>
 
@@ -50,7 +63,6 @@
       <div class="hands">
         <div class="cards-in-hand">
           <div class="cards card-backs" id="0 opponent-card-0">
-            
           </div>
           <div class="cards card-backs" id="1">
           </div>
@@ -136,3 +148,10 @@
 </body>
 
 </html>
+<!-- 
+
+Works Cited:
+
+Menu Button: https://www.cssscript.com/css-hamburger-toggle-menu/ 
+
+-->

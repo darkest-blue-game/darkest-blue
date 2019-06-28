@@ -16,21 +16,33 @@
 </head>
 
 <body>
-  <header>
 
-    <nav>
-      <a href="./index.html">INTRO</a>
-      <a href="./pages/game.html">GAME</a>
-      <a href="./pages/result.html">RESULTS</a>
-      <button>MENU</button>
-    </nav>
-  </header>
+  
 
   <main>
 
+    <!-- Menu toggle button -->
+  <div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+
+  <!-- Off-canvas navigation menu. Works cited at bottom. -->
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li><a href="#" >GAME RULES</a></li>
+      <li><a href="./index.html">INTRO</a></li>
+      <li><a href="./pages/game.html">GAME</a></li>
+      <li><a href="./pages/result.html">RESULTS</a></a></li>
+      <li><a href="#" >ABOUT THE DEVELOPERS</a></li>
+    </ul>
+  </div>
+
     <div id="title-banner-container">
       <div id="game-title">DARKEST BLUE</div>
-
       <div>
         <img src="./pages/assets/energy-flow.jpg" alt="Broken Link" id="intro-screen-banner">
       </div>
