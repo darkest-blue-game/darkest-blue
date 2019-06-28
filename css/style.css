@@ -540,7 +540,20 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   position: fixed;
   top: 0;
   left: 0;
+<<<<<<< Updated upstream
   z-index: 999;
   width: 100px;
+=======
+  z-index: 99;
+  width: 200px;
+>>>>>>> Stashed changes
   height: 23px;
+}
+
+#blackout{
+  background-color:red;
+  transition: transform 1s;
+}
+#blackout{
+  transform: rotate(1080deg);
 }
