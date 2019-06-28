@@ -30,73 +30,74 @@
       <!-- Off-canvas navigation menu. Works cited at bottom. -->
       <div id="sidebarMenu">
         <ul class="sidebarMenuInner">
-            <li>
-                <a href="#" id="game-rules-modal-button">
-                  GAME RULES
-                  <!-- Triggers/Opens The Modal -->
-                  <!-- The Modal -->
-                  <div id="game-rules-modal" class="modal">
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                      <span class="close">&times;</span>
-                      <p>
-                        <ul>
-                          <lh>GAME RULES:</lh>
-                          <li>The player will be dealt 5 cards to start.</li>
-                          <li>The payer must play one card per turn.</li>
-                          <li>The player will have a card automatically drawn from the top of their deck at the end of their turn to replace the card they just used.</li>
-                          <li>Deck is comprised of 46 cards, split between 23 attack and heal cards.</li>
-                          <li>Both player and opponent will have a health pool of 15 points. The first to reach 0 health points loses.</li>
-                          <li>Have fun!!!</li>
-                        </ul>
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              </li>
+          <li>
+            <a href="#" id="game-rules-modal-button">
+              GAME RULES
+              <!-- Triggers/Opens The Modal -->
+              <!-- The Modal -->
+              <div id="game-rules-modal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p>
+                    <ul>
+                      <lh>GAME RULES:</lh>
+                      <li>The player will be dealt 5 cards to start.</li>
+                      <li>The payer must play one card per turn.</li>
+                      <li>The player will have a card automatically drawn from the top of their deck at the end of their
+                        turn to replace the card they just used.</li>
+                      <li>Deck is comprised of 46 cards, split between 23 attack and heal cards.</li>
+                      <li>Both player and opponent will have a health pool of 15 points. The first to reach 0 health
+                        points loses.</li>
+                      <li>Have fun!!!</li>
+                    </ul>
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
           <li><a href="../index.html">INTRO</a></li>
           <li><a href="./#">GAME</a></li>
           <li><a href="./result.html">RESULTS</a></a></li>
           <li>
-              <a href="#" id="about-devs-modal-button">
-                  ABOUT THE DEVELOPERS
-                <!-- Triggers/Opens The Modal -->
-                <!-- The Modal -->
-                <div id="about-devs-modal" class="modal">
-                  <!-- Modal content -->
-                  <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <p>
-                      <ul>
-                        <lh>THE DEVS:</lh>
-                        <li>Padmapriya Ganapathi</li>
-                        <li>Role: Programmer </li>
-                        <li>Known with both fear and affection as "The Code Beast", crushes more lines of pure JS in a morning than most devs due all week. When she's not shredding repos with her senior-dev level prowess she can be found at home with her family.</li>
-                        <li>Github: <a href="https://github.com/gpadmapriya" target="_blank">@gpadmapriya</a>
-                        </li>
-                        <li>Fabian Brooks</li>
-                        <li>Role: Technical Artist</li>
-                        <li>Bridges the gap between the technical and the artistic with a ferocious programming speed that no mere mortal could hope to keep pace with. Widely regarded as the fastest developer in the northern hemisphere.</li>
-                        <li>Github: <a href="https://github.com/FabianB14"    target="_blank">@FabianB14</a>
-                        </li>
-                        <li>Brandon Hurrington</li>
-                        <li>Role: Animator</li>
-                        <li>Imagine Peter Parker in Spiderman: Homecoming during the ferry scene, zipping around trying to keep it alfoat with a dangerous mix of web-shooters and brawn. That's this guy.</li>
-                        <li>Github: <a href="https://github.com/Kai-ros" target="_blank">@Kai-ros</a>
-                        </li>
-                      </ul>
-                    </p>
-                  </div>
+            <a href="#" id="about-devs-modal-button">
+              ABOUT THE DEVELOPERS
+              <!-- Triggers/Opens The Modal -->
+              <!-- The Modal -->
+              <div id="about-devs-modal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p>
+                    <ul>
+                      <lh>THE DEVS:</lh>
+                      <li>Padmapriya Ganapathi</li>
+                      <li>Role: Programmer </li>
+                      <li>Known with both fear and affection as "The Code Beast", crushes more lines of pure JS in a
+                        morning than most devs due all week. When she's not shredding repos with her senior-dev level
+                        prowess she can be found at home with her family.</li>
+                      <li>Github: <a href="https://github.com/gpadmapriya" target="_blank">@gpadmapriya</a>
+                      </li>
+                      <li>Fabian Brooks</li>
+                      <li>Role: Technical Artist</li>
+                      <li>Bridges the gap between the technical and the artistic with a ferocious programming speed that
+                        no mere mortal could hope to keep pace with. Widely regarded as the fastest developer in the
+                        northern hemisphere.</li>
+                      <li>Github: <a href="https://github.com/FabianB14" target="_blank">@FabianB14</a>
+                      </li>
+                      <li>Brandon Hurrington</li>
+                      <li>Role: Animator</li>
+                      <li>Imagine Peter Parker in Spiderman: Homecoming during the ferry scene, zipping around trying to
+                        keep it alfoat with a dangerous mix of web-shooters and brawn. That's this guy.</li>
+                      <li>Github: <a href="https://github.com/Kai-ros" target="_blank">@Kai-ros</a>
+                      </li>
+                    </ul>
+                  </p>
                 </div>
-              </a>
-            </li>
+              </div>
+            </a>
+          </li>
         </ul>
-      </div>
-
-      <div id="scrollbox-container">
-        <p>GAME LOG: </p>
-        <div id="game-log">
-        </div>
       </div>
 
       <div class="health-bars">
@@ -189,7 +190,13 @@
         <progress id="opponentHealth" value="15" max="15"></progress>
 
       </div>
-      <!-- <h1>TURN</h1> -->
+
+      <div id="scrollbox-container">
+        <p>GAME LOG: </p>
+        <div id="game-log">
+
+        </div>
+      </div>
 
     </div>
 
