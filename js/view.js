@@ -13,10 +13,22 @@ var gameRulesButton = document.getElementById('game-rules-modal-button');
 // Get the <span> element that closes the modal
 var gameRulesSpan = document.getElementsByClassName('close')[0];
 
-// When the user clicks on the button, opens the modal 
-gameRulesButton.onclick = function() {
-  gameRulesModal.style.display = 'block';
+var modalOffClickHandler = function() {
+  gameRulesModal.style.display = 'none';
+  gameRulesButton.removeEventListener('click', modalOffClickHandler);
+
+  gameRulesButton.addEventListener('click', modalOnClickHandler); 
 };
+
+var modalOnClickHandler = function() {
+  gameRulesModal.style.display = 'block';
+  gameRulesButton.removeEventListener('click', modalOnClickHandler);
+
+  gameRulesButton.addEventListener('click', modalOffClickHandler); 
+};
+
+// When the user clicks on the button, opens the modal 
+gameRulesButton.addEventListener('click', modalOnClickHandler);
 
 // When the user clicks on <span> (x), closes the modal
 gameRulesSpan.onclick = function() {

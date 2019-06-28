@@ -53,7 +53,7 @@ body {
 
 #game-results-container {
   position: absolute;
-  top: 260px;
+  top: 240px;
   left: 310px;
   padding: 10px;
   margin: 10px auto 10px;
@@ -78,7 +78,7 @@ body {
   font-weight: bold;
 }
 
-#Player {
+#player-name-form {
   margin: 20px auto 20px;
   text-align: center;
 }
@@ -187,7 +187,6 @@ body {
   width: 70px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
-  font-family: 'Akronim';
   border: 5px ridge darkslategrey;
   border-radius: 15px;
 }
@@ -235,7 +234,7 @@ body {
   background-color: deepskyblue;
   border-radius: 15px;
   position: relative;
-  top: 380px;
+  top: 350px;
   padding: 10px;
   z-index: -1;
 }
@@ -253,22 +252,25 @@ body {
   z-index: -1;
 }
 
-button {
-  background-color: grey;
-  color: #00d4ff;
-  border: 2px solid #00d4ff; 
-  border-radius: 25px;
+button {  
+  background-color: deepskyblue;
+  color: #201d57;
+  border: 5px ridge darkslategrey; 
+  border-radius: 15px;
   font-size: 25px;
   padding: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 input {
-  background-color: grey;
-  color: #00d4ff;
-  border: 2px solid #00d4ff; 
-  border-radius: 25px;
+  background-color: deepskyblue;
+  color: #201d57;
+  border: 5px ridge darkslategrey; 
+  border-radius: 15px;
   font-size: 25px;
   margin: 20px auto 20px;
+  padding: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /* Health bar and title positioning. */
@@ -289,15 +291,15 @@ input {
 
 #playerHealth {
   position: relative;
-  top: 510px;
-  left: 50px;
+  top: 725px;
+  left: 25px;
   z-index: -1;
 }
 
 #player-health-title {
   position: relative;
-  top: 700px;
-  left: 75px;
+  top: 925px;
+  left: 50px;
   font-size: 25px;
   text-decoration: underline;
   z-index: -1;
@@ -474,10 +476,10 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  left: 250px;
+  top: 0px;
+  width: 600px; /* Full width */
+  height: 600px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -539,6 +541,6 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   top: 0;
   left: 0;
   z-index: 999;
-  width: 100%;
+  width: 100px;
   height: 23px;
 }
