@@ -314,4 +314,10 @@ progress[value]::-webkit-progress-value {
 
 
 
+ .cardsSpin {
+  transition: transform 1s;
+}
 
+.cardsSpin:active {
+  transform: rotate(1080deg);
+} 

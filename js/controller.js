@@ -15,7 +15,9 @@ var winnerElement = document.getElementById('winner');
 var winnerHealthElement = document.getElementById('winner-remaining-health');
 var playerCards = document.getElementById('player-cards');
 var opponentCards = document.getElementById('opponent-cards');
-
+var sleep = (milliseconds) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+};
 var bossDeck = createDeck();
 //This will be the function the save the players name and start the game.
 function handleSubmit(event) {
@@ -46,14 +48,20 @@ function handleGamePlay(event) {
   event.preventDefault();
   var players = selectPlayer();
   console.log(players);
-  playCard(players[0], players[1], players[2]);
-  playCard(Player.allPlayers[1], Player.allPlayers[0]);
+  sleep(1000).then(() =>{
+    playCard(players[0], players[1], players[2]);
+  });
+  sleep(3000).then(() =>{
+    playCard(Player.allPlayers[1], Player.allPlayers[0]);
+  });
   if (Player.allPlayers[0].remainingHealthPoints <= 0 || Player.allPlayers[1].remainingHealthPoints <= 0) {
     storeObjects();
     location.href = './result.html';
   }
   console.log(Player.allPlayers[0].hand);
-  assignHand(players[3]);
+  sleep(3000).then(() =>{
+    assignHand(players[3]);
+  });
 }
 
 //This will select the card to play
@@ -109,6 +117,15 @@ var assignHand = function (handIndex) {
 
   }
 };
+var addClass = function(event){
+  event.preventDefault();
+  var cardPlayed = event.target;
+  console.log(cardPlayed);
+  cardPlayed.class += 'cardSpin';
+  var id = cardPlayed.id;
+  console.log(cardPlayed);
+  console.log(id);
+};
 
 //This will contain all the game board setup functions
 var boardSetUp = function (newBoard) {
@@ -149,6 +166,7 @@ if (playerHand !== null) {
   secondLoad();
   if (Player.allPlayers[0].nextTurn === true) {
     playerHand.addEventListener('click', handleGamePlay, true);
+    playerHand.addEventListener('mouseup', addClass);
   }
   // else{
   //   var players = selectPlayer();
