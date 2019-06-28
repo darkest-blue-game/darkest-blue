@@ -517,9 +517,8 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   /* When the animation is finished, start again */
   animation-iteration-count: infinite; 
   animation-delay: -2s;
-  
-
 }
+
 @keyframes shake {
   0% { transform: translate(10px, 10px) rotate(0deg); }
   10% { transform: translate(-1opx, -20px) rotate(-1deg); }
@@ -533,6 +532,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   90% { transform: translate(10px, 20px) rotate(0deg); }
   100% { transform: translate(10px, -20px) rotate(-1deg); }
 }
+
 #discarded{
   background-color: black;
   position: fixed;
