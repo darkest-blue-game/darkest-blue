@@ -5,6 +5,7 @@ var opponentDeck = [];
 var logArray = '';
 
 var classMembers = ['Renee', 'Marisha', 'Promila', 'Manish', 'Chris', 'Sapana', 'Padma', 'Steven', 'Matt', 'Jack', 'Melfi', 'Nicholas', 'Kevin', 'Brandon', 'Fabian', 'Joachen', 'Peter', 'Trevor', 'Travis', 'Jackie', 'Jane', 'Roman', 'Nhu'];
+var wildCards = ['Nicholas','Dan','Aliya','Chris'];
 
 //Player constructor
 var Player = function (name) {
