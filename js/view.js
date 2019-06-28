@@ -1,23 +1,68 @@
 'use strict';
 
+//  Off-canvas navigation menu. Works cited at bottom. 
+
+// Game rules modals.
+
+// Target modal
+var gameRulesModal = document.getElementById('game-rules-modal');
+
+// Target button that opens the modal
+var gameRulesButton = document.getElementById('game-rules-modal-button');
+
+// Get the <span> element that closes the modal
+var gameRulesSpan = document.getElementsByClassName('close')[0];
+
+// When the user clicks on the button, opens the modal 
+gameRulesButton.onclick = function() {
+  gameRulesModal.style.display = 'block';
+};
+
+// When the user clicks on <span> (x), closes the modal
+gameRulesSpan.onclick = function() {
+  gameRulesModal.style.display = 'none';
+};
+
+// When the user clicks anywhere outside of the modal, closes the modal.
+window.onclick = function(event) {
+  if (event.target === gameRulesModal) {
+    gameRulesModal.style.display = 'none';
+  }
+};
+
+// About the devs modals.
+
+// Target modal
+var aboutTheDevsModal = document.getElementById('about-devs-modal');
+
+// Target button that opens the modal
+var aboutTheDevsModalButton = document.getElementById('about-devs-modal-button');
+
+// Get the <span> element that closes the modal
+var aboutTheDevsModalSpan = document.getElementsByClassName('close')[0];
+
+// When the user clicks on the button, opens the modal 
+aboutTheDevsModalButton.onclick = function() {
+  aboutTheDevsModal.style.display = 'block';
+};
+
+// When the user clicks on <span> (x), closes the modal
+aboutTheDevsModalSpan.onclick = function() {
+  aboutTheDevsModal.style.display = 'none';
+};
+
+// When the user clicks anywhere outside of the modal, closes the modal.
+window.onclick = function(event) {
+  if (event.target === aboutTheDevsModal) {
+    aboutTheDevsModal.style.display = 'none';
+  }
+};
 
 
+// Works Cited:
 
-//   var gradient = context.createRadialGradient(110, 90, 30, 100, 100, 70);
-//   gradient.addColorStop(0, "white");
-//   gradient.addColorStop(0.9, "#201d57");
-//   gradient.addColorStop(1, "black");
-  
-//   context.fillStyle = gradient;
-//   context.fillRect(10, 10, 400, 400);
-// };
+// Modal functionality: // https://www.w3schools.com/howto/howto_css_modals.asp
 
 
-
-// var firstCardTag = document.getElementById('first-card');
-// var secondCardTag = document.getElementById('second-card');
-// var thirdCardTag = document.getElementById('third-card');
-// var fourthCardTag = document.getElementById('fourth-card');
-// var fifthCardTag = document.getElementById('fifth-card');
 
 
