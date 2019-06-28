@@ -3,7 +3,7 @@
 //Here will be the the methods and function that will be controlling the flow of the game.
 //This is how all the objects will interact with ech other.
 //This will be all global Variables
-var playerForm = document.getElementById('Player');
+var playerForm = document.getElementById('player-name-form');
 var playerNameH1 = document.getElementById('player-name');
 var playerHand = document.getElementById('PlayerHand');
 var gameScreen = document.getElementById('game-screen-center');
