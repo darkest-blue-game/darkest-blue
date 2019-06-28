@@ -156,8 +156,8 @@ function playCard(currentPlayer, otherPlayer, card) {
 
 function createCards() {
   for (var i = 0; i < classMembers.length; i++) {
-    new Card(classMembers[i], 'heal', Math.floor(Math.random() * 7) + 1);
-    new Card(classMembers[i], 'attack', Math.floor(Math.random() * 7) + 1);
+    new Card(classMembers[i], 'heal', Math.floor(Math.random() * 7) + 1, './assets/capture-the-sky.jpg');
+    new Card(classMembers[i], 'attack', Math.floor(Math.random() * 7) + 1, './assets/ignite.jpg');
   }
 }
 createCards();
