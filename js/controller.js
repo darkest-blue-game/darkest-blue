@@ -8,13 +8,17 @@
 var playerForm = document.getElementById('Player');
 var playerNameH1 = document.getElementById('player-name');
 var playerHand = document.getElementById('PlayerHand');
-var newBoard;
-var playerName;
-var newDeck;
+var gameScreen = document.getElementById('game-screen-center');
 var winnerElement = document.getElementById('winner');
 var winnerHealthElement = document.getElementById('winner-remaining-health');
 var playerCards = document.getElementById('player-cards');
 var opponentCards = document.getElementById('opponent-cards');
+var divHand;
+var divHandSet;
+var newBoard;
+var playerName;
+var newDeck;
+
 var sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
@@ -46,14 +50,23 @@ var secondLoad = function () {
 //This will allow players to select cards to attack with or defend
 function handleGamePlay(event) {
   event.preventDefault();
+  var cardPlayed = event.target;
+  var id = cardPlayed.id;
+  divHand = document.getElementById(id);
+  divHandSet = id;
+  divHand.setAttribute('id', 'discarded');
   var players = selectPlayer();
   console.log(players);
   sleep(1000).then(() =>{
+    gameScreen.setAttribute('id','gameScreen');
     playCard(players[0], players[1], players[2]);
   });
+  sleep(2000).then(() =>{setGameScreen(id);});
   sleep(3000).then(() =>{
     playCard(Player.allPlayers[1], Player.allPlayers[0]);
+    gameScreen.setAttribute('id','gameScreen');
   });
+  sleep(4000).then(() =>{setGameScreen();});
   if (Player.allPlayers[0].remainingHealthPoints <= 0 || Player.allPlayers[1].remainingHealthPoints <= 0) {
     storeObjects();
     location.href = './result.html';
@@ -63,7 +76,12 @@ function handleGamePlay(event) {
     assignHand(players[3]);
   });
 }
-
+//This will set game screen id back to orginal
+var setGameScreen = function(){
+  console.log(divHand, divHandSet);
+  gameScreen.setAttribute('id','game-screen-center');
+  divHand.setAttribute('id',divHandSet);
+};
 //This will select the card to play
 var selectPlayer = function () {
   if (Player.allPlayers[0].nextTurn === true) {
@@ -117,15 +135,16 @@ var assignHand = function (handIndex) {
 
   }
 };
-var addClass = function(event){
-  event.preventDefault();
-  var cardPlayed = event.target;
-  console.log(cardPlayed);
-  cardPlayed.class += 'cardSpin';
-  var id = cardPlayed.id;
-  console.log(cardPlayed);
-  console.log(id);
-};
+// var addClass = function(event){
+//   event.preventDefault();
+//   console.log('second event');
+//   var cardPlayed = event.target;
+//   console.log(cardPlayed);
+//   cardPlayed.setAttribute('class','cardsSpin');
+//   var id = cardPlayed.id;
+//   console.log(cardPlayed);
+//   console.log(id);
+// };
 
 //This will contain all the game board setup functions
 var boardSetUp = function (newBoard) {
@@ -165,8 +184,8 @@ if (playerForm !== null) {
 if (playerHand !== null) {
   secondLoad();
   if (Player.allPlayers[0].nextTurn === true) {
-    playerHand.addEventListener('click', handleGamePlay, true);
-    playerHand.addEventListener('mouseup', addClass);
+    sleep(200).then(() =>{ playerHand.addEventListener('click', handleGamePlay, true);});
+    // playerHand.addEventListener('mouseup', addClass);
   }
   // else{
   //   var players = selectPlayer();
