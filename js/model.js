@@ -9,7 +9,7 @@ var classMembers = ['Renee', 'Marisha', 'Promila', 'Manish', 'Chris', 'Sapana', 
 //Player constructor
 var Player = function (name) {
   this.name = name;
-  this.remainingHealthPoints = 20;
+  this.remainingHealthPoints = 15;
   this.numberOfCardsPlayed = 0;
   this.numberOfTurnsPlayed = 0;
   this.nextTurn = false;
@@ -42,7 +42,7 @@ Card.allCards = [];
 
 //Player and the opponent get their own deck of cards
 var Deck = function (cards = []) {
-  this.cards = cards;
+  this.cards = [...cards];
 };
 
 //Player and opponent have 5 cards in hand at a time
