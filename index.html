@@ -10,36 +10,88 @@
 
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Darkest Blue - Intro Screen</title>
-  <!-- <link href='https://fonts.googleapis.com/css?family=Akronim' rel='stylesheet'> -->
   <link rel="stylesheet" href="./css/reset.css" type="text/css">
   <link rel="stylesheet" href="./css/style.css" type="text/css">
 </head>
 
 <body>
 
-  
-
   <main>
 
     <!-- Menu toggle button -->
-  <div class="header"></div>
-  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
-  <label for="openSidebarMenu" class="sidebarIconToggle">
-    <div class="spinner diagonal part-1"></div>
-    <div class="spinner horizontal"></div>
-    <div class="spinner diagonal part-2"></div>
-  </label>
+    <div class="header"></div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+      <div class="spinner diagonal part-1"></div>
+      <div class="spinner horizontal"></div>
+      <div class="spinner diagonal part-2"></div>
+    </label>
 
-  <!-- Off-canvas navigation menu. Works cited at bottom. -->
-  <div id="sidebarMenu">
-    <ul class="sidebarMenuInner">
-      <li><a href="#" >GAME RULES</a></li>
-      <li><a href="./index.html">INTRO</a></li>
-      <li><a href="./pages/game.html">GAME</a></li>
-      <li><a href="./pages/result.html">RESULTS</a></a></li>
-      <li><a href="#" >ABOUT THE DEVELOPERS</a></li>
-    </ul>
-  </div>
+    <!-- Off-canvas navigation menu. Works cited at bottom. -->
+    <div id="sidebarMenu">
+        <ul class="sidebarMenuInner">
+            <li>
+                <a href="#" id="game-rules-modal-button">
+                  GAME RULES
+                  <!-- Triggers/Opens The Modal -->
+                  <!-- The Modal -->
+                  <div id="game-rules-modal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <p>
+                        <ul>
+                          <lh>GAME RULES:</lh>
+                          <li>The player will be dealt 5 cards to start.</li>
+                          <li>The payer must play one card per turn.</li>
+                          <li>The player will have a card automatically drawn from the top of their deck at the end of their turn to replace the card they just used.</li>
+                          <li>Deck is comprised of 46 cards, split between 23 attack and heal cards.</li>
+                          <li>Both player and opponent will have a health pool of 15 points. The first to reach 0 health points loses.</li>
+                          <li>Have fun!!!</li>
+                        </ul>
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+          <li><a href="./#">INTRO</a></li>
+          <li><a href="./pages/game.html">GAME</a></li>
+          <li><a href="./pages/result.html">RESULTS</a></a></li>
+          <li>
+              <a href="#" id="about-devs-modal-button">
+                  ABOUT THE DEVELOPERS
+                <!-- Triggers/Opens The Modal -->
+                <!-- The Modal -->
+                <div id="about-devs-modal" class="modal">
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>
+                      <ul>
+                        <lh>THE DEVS:</lh>
+                        <li>Padmapriya Ganapathi</li>
+                        <li>Role: Programmer </li>
+                        <li>Known with both fear and affection as "The Code Beast", crushes more lines of pure JS in a morning than most devs due all week. When she's not shredding repos with her senior dev level prowess she can be found at home with her family.</li>
+                        <li>Github: <a href="https://github.com/gpadmapriya" target="_blank">@gpadmapriya</a>
+                        </li>
+                        <li>Fabian Brooks</li>
+                        <li>Role: Technical Artist</li>
+                        <li>Bridges the gap between the technical and the artistic at a ferocious that no mere mortal could hope to keep pace with. Widely regarded as the fastest developer in the northern hemisphere.</li>
+                        <li>Github: <a href="https://github.com/FabianB14"    target="_blank">@FabianB14</a>
+                        </li>
+                        <li>Brandon Hurrington</li>
+                        <li>Role: Animator</li>
+                        <li>Imagine Peter Parker in Spiderman: Homecoming zipping around trying to keep the ferry together so it won't sink with a dangerous mix of web shooters and brawn. That's this guy.</li>
+                        <li>Github: <a href="https://github.com/Kai-ros" target="_blank">@Kai-ros</a>
+                        </li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </li>
+        </ul>
+      </div>
 
     <div id="title-banner-container">
       <div id="game-title">DARKEST BLUE</div>
@@ -64,3 +116,12 @@
 </section>
 
 </html>
+<!-- 
+
+Works Cited:
+
+Menu Button: https://www.cssscript.com/css-hamburger-toggle-menu/ 
+
+Modal functionality: // https://www.w3schools.com/howto/howto_css_modals.asp
+
+-->

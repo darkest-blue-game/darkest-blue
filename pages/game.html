@@ -30,11 +30,66 @@
       <!-- Off-canvas navigation menu. Works cited at bottom. -->
       <div id="sidebarMenu">
         <ul class="sidebarMenuInner">
-          <li><a href="#" >GAME RULES</a></li>
+            <li>
+                <a href="#" id="game-rules-modal-button">
+                  GAME RULES
+                  <!-- Triggers/Opens The Modal -->
+                  <!-- The Modal -->
+                  <div id="game-rules-modal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <p>
+                        <ul>
+                          <lh>GAME RULES:</lh>
+                          <li>The player will be dealt 5 cards to start.</li>
+                          <li>The payer must play one card per turn.</li>
+                          <li>The player will have a card automatically drawn from the top of their deck at the end of their turn to replace the card they just used.</li>
+                          <li>Deck is comprised of 46 cards, split between 23 attack and heal cards.</li>
+                          <li>Both player and opponent will have a health pool of 15 points. The first to reach 0 health points loses.</li>
+                          <li>Have fun!!!</li>
+                        </ul>
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </li>
           <li><a href="../index.html">INTRO</a></li>
-          <li><a href="./game.html">GAME</a></li>
+          <li><a href="./#">GAME</a></li>
           <li><a href="./result.html">RESULTS</a></a></li>
-          <li><a href="#" >ABOUT THE DEVELOPERS</a></li>
+          <li>
+              <a href="#" id="about-devs-modal-button">
+                  ABOUT THE DEVELOPERS
+                <!-- Triggers/Opens The Modal -->
+                <!-- The Modal -->
+                <div id="about-devs-modal" class="modal">
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>
+                      <ul>
+                        <lh>THE DEVS:</lh>
+                        <li>Padmapriya Ganapathi</li>
+                        <li>Role: Programmer </li>
+                        <li>Known with both fear and affection as "The Code Beast", crushes more lines of pure JS in a morning than most devs due all week. When she's not shredding repos with her senior dev level prowess she can be found at home with her family.</li>
+                        <li>Github: <a href="https://github.com/gpadmapriya" target="_blank">@gpadmapriya</a>
+                        </li>
+                        <li>Fabian Brooks</li>
+                        <li>Role: Technical Artist</li>
+                        <li>Bridges the gap between the technical and the artistic at a ferocious that no mere mortal could hope to keep pace with. Widely regarded as the fastest developer in the northern hemisphere.</li>
+                        <li>Github: <a href="https://github.com/FabianB14"    target="_blank">@FabianB14</a>
+                        </li>
+                        <li>Brandon Hurrington</li>
+                        <li>Role: Animator</li>
+                        <li>Imagine Peter Parker in Spiderman: Homecoming zipping around trying to keep the ferry together so it won't sink with a dangerous mix of web shooters and brawn. That's this guy.</li>
+                        <li>Github: <a href="https://github.com/Kai-ros" target="_blank">@Kai-ros</a>
+                        </li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </li>
         </ul>
       </div>
 
@@ -96,23 +151,23 @@
       <div class="hands" id="PlayerHand">
         <div class="cards-in-hand">
 
-          <div class="cards players-cards" id="5" >
+          <div class="cards players-cards" id="5">
             <img src="https://placehold.it/50x70/111" alt="" id="5">
           </div>
 
-          <div class="cards players-cards" id="6" >
+          <div class="cards players-cards" id="6">
             <img src="https://placehold.it/50x70/111" alt="" id="6">
           </div>
 
-          <div class="cards players-cards" id="7" >
+          <div class="cards players-cards" id="7">
             <img src="https://placehold.it/50x70/111" alt="" id="7">
           </div>
 
-          <div class="cards players-cards" id="8" >
+          <div class="cards players-cards" id="8">
             <img src="https://placehold.it/50x70/111" alt="" id="8">
           </div>
 
-          <div class="cards players-cards" id="9" >
+          <div class="cards players-cards" id="9">
             <img src="https://placehold.it/50x70/111" alt="" id="9">
           </div>
 
@@ -153,5 +208,7 @@
 Works Cited:
 
 Menu Button: https://www.cssscript.com/css-hamburger-toggle-menu/ 
+
+Modal functionality: // https://www.w3schools.com/howto/howto_css_modals.asp
 
 -->
